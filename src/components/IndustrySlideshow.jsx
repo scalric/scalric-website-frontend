@@ -1,13 +1,19 @@
 import React from 'react';
+import { useMobile } from '../lib/useMobile.js';
 
 const slides = [
-  { src: '/assets/photos/industries-slide-3.jpg', title: 'A clear view of what matters.', note: 'We bring focus to the questions worth answering.' },
-  { src: '/assets/photos/industries-slide-1.jpg', title: 'Every sector has its own rhythm.', note: 'We start by learning how your industry really works.' },
-  { src: '/assets/photos/industries-slide-2.jpg', title: 'Learning from the people closest to it.', note: 'Good technology is shaped by the teams who use it.' },
+  { src: '/assets/photos/industries-slide-3.webp', title: 'A clear view of what matters.', note: 'We bring focus to the questions worth answering.' },
+  { src: '/assets/photos/industries-slide-8.webp', title: 'Progress is built one rep at a time.', note: 'We help gyms and studios keep members showing up.' },
+  { src: '/assets/photos/industries-slide-7.webp', title: 'In healthcare, precision comes first.', note: 'We design technology that supports careful work and clearer care.' },
+  { src: '/assets/photos/industries-slide-6.webp', title: 'Sport is decided in the details.', note: 'We help clubs and academies turn performance data into better training.' },
+  { src: '/assets/photos/industries-slide-4.webp', title: 'Hospitality runs on small moments.', note: 'We build tools that free your team to focus on the guest.' },
+  { src: '/assets/photos/industries-slide-5.webp', title: 'Every chair is a small business.', note: 'We help studios fill the day and keep clients coming back.' },
+  { src: '/assets/photos/industries-slide-1.webp', title: 'Every sector has its own rhythm.', note: 'We start by learning how your industry really works.' },
 ];
 
 /** Looping slideshow: tall photo panels glide left one at a time, forever; pauses on hover or focus. */
 export default function IndustrySlideshow() {
+  const mobile = useMobile();
   const [index, setIndex] = React.useState(0);
   const [animate, setAnimate] = React.useState(true);
   const paused = React.useRef(false);
@@ -32,7 +38,7 @@ export default function IndustrySlideshow() {
   const onEnd = () => { if (index >= count) { setAnimate(false); setIndex(index - count); } };
   const hold = (value) => () => { paused.current = value; };
 
-  return <section className="ind-slides" aria-roledescription="carousel" aria-label="Industry highlights" onMouseEnter={hold(true)} onMouseLeave={hold(false)} onFocus={hold(true)} onBlur={hold(false)}>
+  return <section className={`ind-slides${mobile ? ' is-m' : ''}`} aria-roledescription="carousel" aria-label="Industry highlights" onMouseEnter={hold(true)} onMouseLeave={hold(false)} onFocus={hold(true)} onBlur={hold(false)}>
     <div className="ind-slides-view">
       <div className={`ind-slides-track${animate ? '' : ' is-still'}`} style={{ '--i': index }} onTransitionEnd={onEnd}>
         {loop.map((slide, i) => <figure className="ind-slide" key={i} aria-hidden={i >= count}>

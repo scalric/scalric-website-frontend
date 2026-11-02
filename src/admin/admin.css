@@ -1,6 +1,6 @@
 /* Admin site (/admin). Scoped under .adm-root so it never affects the public website. */
 .adm-root{--a-blue:#1155d9;--a-blue-soft:#edf1fa;--a-ink:#0b1220;--a-muted:#5b6170;--a-line:#dde3ee;--a-bg:#f5f7fb;
-  min-height:100vh;background:var(--a-bg);color:var(--a-ink);font:14px/1.5 Manrope,system-ui,sans-serif}
+  min-height:100vh;background:var(--a-bg);color:var(--a-ink);font:14px/1.5 var(--font-manrope),Manrope,system-ui,sans-serif}
 .adm-root *{box-sizing:border-box}
 .adm-root h1,.adm-root h2,.adm-root h3,.adm-root p,.adm-root b,.adm-root span,.adm-root small,.adm-root td,.adm-root th,.adm-root dt,.adm-root dd,.adm-root label{color:inherit}
 .adm-root h1{margin:0 0 20px;font-size:26px;letter-spacing:-.02em}

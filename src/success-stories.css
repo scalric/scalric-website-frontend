@@ -77,3 +77,10 @@ body main .ss-lede{max-width:28em;margin:0;font-size:clamp(16px,1.4vw,21px);line
 .ss-tile:hover,.ss-tile:focus-visible,.ss-tile.is-on{z-index:3;transform:scale(1.05)}
 @media (max-width:700px){.ss-tile,.ss-tile-2,.ss-tile-3{transform-origin:50% 50%}.ss-tile:hover,.ss-tile:focus-visible,.ss-tile.is-on{transform:scale(1.04)}}
 @media (prefers-reduced-motion:reduce){.ss-tile{transition:background .35s,box-shadow .35s}.ss-tile:hover,.ss-tile:focus-visible,.ss-tile.is-on{transform:none}}
+
+/* Keep the grown tile and its yellow ring inside the blue band, even at the largest hover size:
+   the poster is inset by more than the growth (5% scale + 5px ring), so nothing reaches the edge of the blue background. */
+.ss-section{overflow:hidden}
+@media (min-width:981px){.ss-section{--ss-pad:48px}.ss-poster{margin-inline:auto;padding:0}}
+@media (max-width:980px){.ss-section{padding-block:56px}.ss-poster{width:min(100%,760px)}}
+@media (max-width:640px){.ss-section{padding-block:44px}.ss-layout{padding-inline:4px}}

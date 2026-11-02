@@ -4,7 +4,7 @@ import { Link, Reveal } from './UI.jsx';
 /** Closing call to action: team photo on the left, a solid blue card overlapping it on the right. */
 export default function ContactBand() {
   return <section className="cx-section"><div className="cx-stage">
-    <div className="cx-photo"><img src="/assets/photos/contact-band-team.png" alt="" loading="lazy" decoding="async" /></div>
+    <div className="cx-photo"><img src="/assets/photos/contact-band-team.webp" alt="" loading="lazy" decoding="async" /></div>
     <Reveal className="cx-card">
       <span className="cx-eyebrow">START A CONVERSATION</span>
       <h2>What could we make possible?</h2>

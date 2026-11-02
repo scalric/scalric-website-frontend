@@ -46,3 +46,9 @@ a.it-row,a.it-photo{text-decoration:none;color:inherit}
 .it-row:hover .it-go,.it-row:focus-visible .it-go,.it-row.is-active .it-go{background:var(--talk,#ffba49);color:#0b1220;transform:translate(2px,-2px)}
 a.it-photo{cursor:pointer}
 @media (max-width:520px){.it-row{grid-template-columns:auto minmax(0,1fr) auto}.it-go{grid-column:3;grid-row:1}}
+
+/* Plain photo grid filling the whole left column (no title, no diamonds) */
+.it-poster-wrap{background:transparent;display:flex}
+.it-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,1fr);gap:4px;width:100%;min-height:100%;background:#1155d9}
+.it-grid .it-photo{position:relative;min-height:clamp(170px,19vw,300px);overflow:hidden}
+@media (max-width:980px){.it-grid{min-height:0}.it-grid .it-photo{min-height:38vw}}

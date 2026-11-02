@@ -11,68 +11,31 @@ const icons = {
 };
 
 const industries = [
-  { title: 'Healthcare & clinics', slug: 'unanswered-clinic-calls', stat: '32%', label: 'of clinic calls go unanswered', fix: 'AI phone agent + reminders', image: '/assets/photos/industry-healthcare.jpg', icon: 'care', tone: '#f08aa0' },
-  { title: 'Home services', slug: 'booking-more-calls-in-home-services', stat: '50→80%', label: 'calls booked after adding an AI agent', fix: 'AI phone agent', image: '/assets/photos/industry-home-services.jpg', icon: 'home', tone: '#ff7a45' },
-  { title: 'Restaurants & cafés', slug: 'the-app-behind-the-order', stat: '33%', label: 'of Starbucks US orders come through its app', fix: 'Ordering app + loyalty', image: '/assets/photos/industry-restaurants.jpg', icon: 'dining', tone: '#ffba49' },
-  { title: 'Gyms & studios', slug: 'branded-apps-for-gyms-and-studios', stat: '62%', label: 'of bookings came through a branded app', fix: 'Booking app', image: '/assets/photos/industry-gyms.jpg', icon: 'sport', tone: '#2fb67c' },
-  { title: 'Salons & spas', slug: 'replying-to-every-review', stat: '80%', label: 'pick businesses that reply to every review', fix: 'Booking + review replies', image: '/assets/photos/industry-salons.jpg', icon: 'beauty', tone: '#8a6cf0' },
+  { title: 'Healthcare & clinics', slug: 'unanswered-clinic-calls', stat: '32%', label: 'of clinic calls go unanswered', fix: 'AI phone agent + reminders', image: '/assets/photos/industry-healthcare.webp', icon: 'care', tone: '#f08aa0' },
+  { title: 'Home services', slug: 'booking-more-calls-in-home-services', stat: '50→80%', label: 'calls booked after adding an AI agent', fix: 'AI phone agent', image: '/assets/photos/industry-home-services.webp', icon: 'home', tone: '#ff7a45' },
+  { title: 'Restaurants & cafés', slug: 'the-app-behind-the-order', stat: '33%', label: 'of Starbucks US orders come through its app', fix: 'Ordering app + loyalty', image: '/assets/photos/industry-restaurants.webp', icon: 'dining', tone: '#ffba49' },
+  { title: 'Gyms & studios', slug: 'branded-apps-for-gyms-and-studios', stat: '62%', label: 'of bookings came through a branded app', fix: 'Booking app', image: '/assets/photos/industry-gyms.webp', icon: 'sport', tone: '#2fb67c' },
+  { title: 'Salons & spas', slug: 'replying-to-every-review', stat: '80%', label: 'pick businesses that reply to every review', fix: 'Booking + review replies', image: '/assets/photos/industry-salons.webp', icon: 'beauty', tone: '#8a6cf0' },
 ];
 
-// Poster layout, traced from the reference poster (a 495 x 708 canvas, every edge at 45 degrees): a blue arrow panel
-// carries the title, and five video panels sit around it. Each polygon gets its own box
-// and clip-path so a video fills its whole facet.
-const W = 495;
-const H = 708;
-const panel = [[0, 105], [255, 360], [0, 615]];
-// Five equal diamonds on a 45-degree grid wrap the arrow in a chevron: two run along each edge of the arrow and one
-// sits on its tip, so every panel shares a straight edge with its neighbour. Top to bottom they follow the list.
-const HALF = 116; // half-width and half-height of each diamond
-const centers = [[139, 128], [255, 244], [371, 360], [255, 476], [139, 592]];
-const diamond = ([cx, cy]) => [[cx, cy - HALF], [cx + HALF, cy], [cx, cy + HALF], [cx - HALF, cy]];
-const photos = centers.map(diamond);
-const GAP = 3.5; // clear space between neighbouring panels, in canvas units
-const onEdge = ([ax, ay], [bx, by]) => (ax === 0 && bx === 0) || (ay === 0 && by === 0) || (ay === H && by === H) || (ax === W && bx === W);
-/** Pulls every edge of a convex polygon inwards by GAP (edges lying on the poster border stay put), so panels never touch or overlap. */
-const inset = (poly) => {
-  const n = poly.length;
-  let area = 0;
-  poly.forEach(([x, y], i) => { const [x2, y2] = poly[(i + 1) % n]; area += x * y2 - x2 * y; });
-  const sign = area > 0 ? 1 : -1; // winding, so the offset always points inwards
-  const lines = poly.map((a, i) => {
-    const b = poly[(i + 1) % n];
-    const len = Math.hypot(b[0] - a[0], b[1] - a[1]);
-    const nx = (-(b[1] - a[1]) / len) * sign; const ny = ((b[0] - a[0]) / len) * sign;
-    const d = onEdge(a, b) ? 0 : GAP;
-    return { px: a[0] + nx * d, py: a[1] + ny * d, dx: (b[0] - a[0]) / len, dy: (b[1] - a[1]) / len };
-  });
-  return lines.map((l2, i) => {
-    const l1 = lines[(i + n - 1) % n];
-    const cross = l1.dx * l2.dy - l1.dy * l2.dx;
-    const t = ((l2.px - l1.px) * l2.dy - (l2.py - l1.py) * l2.dx) / cross;
-    return [l1.px + l1.dx * t, l1.py + l1.dy * t];
-  });
-};
-const shape = (rawPoly, gap = true) => {
-  const poly = gap ? inset(rawPoly) : rawPoly;
-  const xs = poly.map((p) => p[0]); const ys = poly.map((p) => p[1]);
-  const x0 = Math.min(...xs); const x1 = Math.max(...xs); const y0 = Math.min(...ys); const y1 = Math.max(...ys);
-  return {
-    box: { left: `${(x0 / W) * 100}%`, top: `${(y0 / H) * 100}%`, width: `${((x1 - x0) / W) * 100}%`, height: `${((y1 - y0) / H) * 100}%` },
-    clipPath: `polygon(${poly.map(([x, y]) => `${(((x - x0) / (x1 - x0)) * 100).toFixed(2)}% ${(((y - y0) / (y1 - y0)) * 100).toFixed(2)}%`).join(',')})`,
-  };
-};
-const panelShape = shape(panel);
-const photoShapes = photos.map((poly) => shape(poly));
+// Plain photo grid that fills the whole left column. Each tile maps to an industry row (by index) so hover and links stay in sync.
+// `pos` keeps faces in frame when a photo is cropped.
+const tiles = [
+  { industry: 0, image: '/assets/photos/industry-healthcare-new.webp', pos: '45% 52%' },
+  { industry: 3, image: '/assets/photos/industry-gyms-new.webp', pos: '55% 22%' },
+  { industry: 2, image: '/assets/photos/industry-restaurants-new.webp', pos: '45% 30%' },
+  { industry: 4, image: '/assets/photos/industry-salons-new.webp', pos: '50% 40%' },
+  { industry: 1, image: '/assets/photos/industry-home-services.webp', pos: '50% 30%' },
+  { industry: 3, image: '/assets/photos/industry-sports-new.webp', pos: '42% 36%' },
+];
 
 export default function IndustriesTarget() {
   const [active, setActive] = React.useState(1);
   return <section className="section it-section" id="industries-we-target" aria-labelledby="it-title"><div className="container it-wrap">
-    <Reveal className="it-poster-wrap"><div className="it-poster" role="group" aria-label="Industry photos" style={{ aspectRatio: `${W} / ${H}` }}>
-      {industries.map((item, i) => <Link key={item.title} href={`/insights/${item.slug}`} aria-label={`${item.title}: read the insight`} className={`it-photo${active === i ? ' is-active' : ''}`} style={{ ...photoShapes[i].box, clipPath: photoShapes[i].clipPath }} onMouseEnter={() => setActive(i)}>
-        <img src={item.image} alt="" loading="lazy" />
-      </Link>)}
-      <div className="it-panel" style={{ ...panelShape.box, clipPath: panelShape.clipPath }} />
-      <div className="it-title"><span>Industries we</span><strong>TARGET</strong></div>
+    <Reveal className="it-poster-wrap"><div className="it-grid" role="group" aria-label="Industry photos">
+      {tiles.map((tile, i) => { const item = industries[tile.industry]; return <Link key={i} href={`/insights/${item.slug}`} aria-label={`${item.title}: read the insight`} className={`it-photo${active === tile.industry ? ' is-active' : ''}`} onMouseEnter={() => setActive(tile.industry)}>
+        <img src={tile.image} alt="" loading="lazy" style={{ objectPosition: tile.pos }} />
+      </Link>; })}
     </div></Reveal>
     <Reveal className="it-stats" delay={80}>
       <h2 className="it-heading" id="it-title">Industries we<br />TARGET</h2>

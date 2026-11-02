@@ -35,7 +35,7 @@ export default function PurposePanel() {
   return <section className="pw-section" id="costly-mistakes">
     <div className="pw-block" aria-hidden="true" />
     <div className="pw-stage">
-      <Reveal className="pw-photo"><img src="/assets/photos/purpose-skyscrapers.jpg" alt="" loading="lazy" decoding="async" /></Reveal>
+      <Reveal className="pw-photo"><img src="/assets/photos/purpose-skyscrapers.webp" alt="" loading="lazy" decoding="async" /></Reveal>
       <Reveal className="pw-copy" delay={100}>
         <h2>Costly mistakes:<br />what went wrong</h2>
         <p className="pw-sub">Each loss came from a tech decision made without an independent check.</p>

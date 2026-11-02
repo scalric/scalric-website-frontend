@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, Arrow } from './UI.jsx';
 import SiteSearch from './SiteSearch.jsx';
+import { prefetchRoles } from '../lib/roles.js';
 
 const menus = {
   'What We Do': [
@@ -12,15 +13,12 @@ const menus = {
   ],
   Industries: [
     ['Explore industries', '/industries', 'A starting point for sector-specific perspectives.'],
-    ['Financial services', '/industries#financial-services', 'Digital services, data and operations.'],
-    ['Healthcare & life sciences', '/industries#healthcare', 'Connected information and experiences.'],
-    ['Manufacturing', '/industries#manufacturing', 'Intelligence for complex operations.'],
+    ['Our impact', '/industries#impact', 'Real results across the sectors we serve.'],
+    ['How we deliver', '/industries#how', 'The steps behind every engagement.'],
   ],
   Insights: [
     ['View all insights', '/insights', 'Ideas on technology, business and transformation.'],
-    ['Artificial Intelligence', '/insights?topic=Artificial%20Intelligence', 'Perspectives on responsible, useful AI.'],
-    ['Data & Analytics', '/insights?topic=Data%20%26%20Analytics', 'Turning information into better decisions.'],
-    ['Automation', '/insights?topic=Automation', 'Reimagining work and customer journeys.'],
+    ['Success stories', '/insights#success-stories', 'Real examples of what worked.'],
   ],
   Company: [
     ['About Scalric', '/company', 'Why we exist and how we work.'],
@@ -44,6 +42,7 @@ export default function Header({ currentPath }) {
   const queueMenu = (item) => { clearTimeout(hoverTimer.current); hoverTimer.current = window.setTimeout(() => setOpenMenu(item), 150); };
 
   React.useEffect(() => { close(); }, [currentPath, close]);
+  React.useEffect(() => { prefetchRoles(); }, []);
   React.useEffect(() => {
     let last = window.scrollY;
     const onScroll = () => {
@@ -74,9 +73,9 @@ export default function Header({ currentPath }) {
     <header className={`site-header${overlay ? ' is-overlay' : ''}${hidden && !openMenu && !mobileOpen ? ' is-hidden' : ''}`} onMouseLeave={() => { clearTimeout(hoverTimer.current); setOpenMenu(null); }}>
       <div className="header-utility"><div className="container utility-inner"><span className="region-label">India <span>(EN)</span></span><span className="utility-note">Technology · Consulting · Innovation</span></div></div>
       <div className="container header-main" onMouseOver={(event) => { if (!event.target.closest('.nav-menu-trigger')) { clearTimeout(hoverTimer.current); setOpenMenu(null); } }}>
-        <Link href="/" className="brand" aria-label="Scalric home" onClick={close}><img className="logo-green" src="/assets/scalric-wordmark-blue.png" alt="Scalric" width="135" height="34" /></Link>
+        <Link href="/" className="brand" aria-label="Scalric home" onClick={close}><img className="logo-green" src="/assets/scalric-wordmark-blue.webp" alt="Scalric" width="135" height="34" /></Link>
         <nav className="desktop-nav" aria-label="Main navigation">
-          {navItems.map((item) => <Link key={item} href={`/${item.toLowerCase().replaceAll(' ', '-')}`} className={`nav-link nav-menu-trigger${openMenu === item || currentPath.startsWith(`/${item.toLowerCase().replaceAll(' ', '-')}`) ? ' active' : ''}`} aria-haspopup="true" aria-expanded={openMenu === item} aria-controls="mega-menu" onMouseEnter={() => queueMenu(item)} onFocus={() => setOpenMenu(item)} onClick={close}>{item}</Link>)}
+          {navItems.map((item) => <Link key={item} href={`/${item.toLowerCase().replaceAll(' ', '-')}`} className={`nav-link nav-menu-trigger${(openMenu ? openMenu === item : currentPath.startsWith(`/${item.toLowerCase().replaceAll(' ', '-')}`)) ? ' active' : ''}`} aria-haspopup="true" aria-expanded={openMenu === item} aria-controls="mega-menu" onMouseEnter={() => queueMenu(item)} onFocus={() => setOpenMenu(item)} onClick={close}>{item}</Link>)}
         </nav>
         <div className="header-actions"><Link href="/contact" className="button button-dark header-cta">Talk to us <Arrow diagonal /></Link><SiteSearch /><button className={`mobile-menu-trigger${mobileOpen ? ' is-open' : ''}`} aria-label={mobileOpen ? 'Close menu' : 'Open menu'} aria-expanded={mobileOpen} onClick={() => setMobileOpen(!mobileOpen)}><i /><i /></button></div>
       </div>

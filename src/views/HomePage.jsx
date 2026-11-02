@@ -24,18 +24,24 @@ function Hero() {
     if (!video) return;
     if (video.paused) { video.play().catch(() => { }); setPlaying(true); } else { video.pause(); setPlaying(false); }
   };
-  return <section className="home-hero hero-city" id="top" aria-labelledby="hero-title">
-    {enabled && <video ref={videoRef} className="hero-city-video" src={mobile ? '/media/hero-mobile-new.mp4' : '/media/hero-home.mp4'} autoPlay muted loop playsInline preload="auto" aria-hidden="true" tabIndex={-1} key={mobile ? 'm' : 'd'} poster={mobile ? '/assets/hero-mobile-new-poster.jpg' : '/assets/hero-home-poster.jpg'} onCanPlay={(event) => { const video = event.currentTarget; video.muted = true; if (video.paused && playing) video.play().catch(() => setPlaying(false)); }} />}
-    <div className="container hero-content">
+  return <section className={`home-hero hero-city${mobile ? ' hero-m' : ''}`} id="top" aria-labelledby="hero-title">
+    {enabled && <video ref={videoRef} className="hero-city-video" src={mobile ? '/media/hero-mobile-v2.mp4' : '/media/hero-home.mp4'} autoPlay muted loop playsInline preload="auto" aria-hidden="true" tabIndex={-1} key={mobile ? 'm' : 'd'} poster={mobile ? '/assets/hero-mobile-v2-poster.webp' : '/assets/hero-home-poster.webp'} onCanPlay={(event) => { const video = event.currentTarget; video.muted = true; if (video.paused && playing) video.play().catch(() => setPlaying(false)); }} />}
+    {mobile ? <div className="container hero-content hero-content-m">
+      <div className="hero-m-top">
+        <Eyebrow>TECHNOLOGY · CONSULTING · INNOVATION</Eyebrow>
+        <SplitHeading as="h1" lines={['Engineering', 'the difference']} accent={1} className="hero-title" startDelay={2} />
+      </div>
+      <div className="hero-actions hero-m-bottom"><Link href="/what-we-do" className="button button-green">Learn more</Link><Link href="/industries#impact" className="button button-outline" onClick={() => window.dispatchEvent(new CustomEvent('scalric:analytics', { detail: { event: 'impact_teaser_click' } }))}>See our impact</Link></div>
+    </div> : <div className="container hero-content">
       <Eyebrow>TECHNOLOGY · CONSULTING · INNOVATION</Eyebrow>
       <SplitHeading as="h1" lines={['Engineering', 'the difference']} accent={1} className="hero-title" startDelay={2} />
       <div className="hero-actions"><Link href="/what-we-do" className="button button-green">Learn more</Link><Link href="/industries#impact" className="button button-outline" onClick={() => window.dispatchEvent(new CustomEvent('scalric:analytics', { detail: { event: 'impact_teaser_click' } }))}>See our impact</Link></div>
-    </div>
+    </div>}
     <button type="button" className="hero-toggle hero-city-toggle" onClick={toggle} aria-pressed={!playing} aria-label={playing ? 'Pause background video' : 'Play background video'}>{playing ? '❚❚' : '▶'}</button>
   </section>;
 }
 
-const thinkImages = ['/assets/photos/think-dashboard.jpg', '/assets/photos/think-lightbulb.jpg', '/assets/photos/think-handshake.jpg'];
+const thinkImages = ['/assets/photos/think-dashboard.webp', '/assets/photos/home-insight-ai.webp', '/assets/photos/think-automation-new.webp'];
 
 function InsightsSection() {
   const track = (event, slug) => window.dispatchEvent(new CustomEvent('scalric:analytics', { detail: { event, slug } }));

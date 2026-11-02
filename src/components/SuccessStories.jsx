@@ -26,7 +26,7 @@ function Logo({ story }) {
   React.useEffect(() => {
     if (!story.logo) return undefined;
     let cancelled = false;
-    const options = [`/assets/logos/${slug(story.name)}.svg`, `/assets/logos/${slug(story.name)}.png`];
+    const options = [`/assets/logos/${slug(story.name)}.svg`, `/assets/logos/${slug(story.name)}.webp`];
     const probe = (index) => {
       if (index >= options.length) return;
       const image = new Image();

@@ -59,7 +59,7 @@ export default function Footer() {
   return <footer className="sf" ref={ref}>
     <div className="container sf-top">
       <div className="sf-brand">
-        <Link href="/" className="sf-logo" aria-label="Scalric home"><img src="/assets/scalric-wordmark-white.png" alt="Scalric" width="150" height="37" loading="lazy" /></Link>
+        <Link href="/" className="sf-logo" aria-label="Scalric home"><img src="/assets/scalric-wordmark-white.webp" alt="Scalric" width="150" height="37" loading="lazy" /></Link>
         <p>We study complex problems and build technology and consulting solutions for meaningful impact</p>
         <ul className="sf-social" aria-label="Scalric on social media">{socials.map((s) => <li key={s.name}><a data-brand={s.name.toLowerCase()} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={`Scalric on ${s.name}`}><svg viewBox="0 0 24 24" aria-hidden="true"><path d={s.path} fill="currentColor" /></svg></a></li>)}</ul>
       </div>

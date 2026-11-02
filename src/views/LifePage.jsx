@@ -1,24 +1,25 @@
 'use client';
 import React from 'react';
 import { Link, Reveal } from '../components/UI.jsx';
+import { useMobile } from '../lib/useMobile.js';
 
-const heroSlides = ['/assets/photos/life-3.jpg', '/assets/photos/life-1.jpg', '/assets/photos/life-2.jpg'];
+const heroSlides = ['/assets/photos/life-3.webp', '/assets/photos/life-1.webp', '/assets/photos/life-2.webp'];
 
 const stories = [
   {
-    image: '/assets/photos/life-1.jpg',
+    image: '/assets/photos/life-1.webp',
     alt: 'A group of Scalric colleagues smiling up at the camera with their thumbs raised',
     title: 'People who back each other',
     text: 'Colleagues here ask for help early and give it freely. A hard question goes to whoever knows the answer, whatever their title. When a project lands, everyone who touched it shares the credit.',
   },
   {
-    image: '/assets/photos/life-2.jpg',
+    image: '/assets/photos/life-2.webp',
     alt: 'Colleagues laughing together in front of a wall of sticky notes',
     title: 'Ideas get a fair hearing',
     text: 'Our best work often starts on a wall of sticky notes. Anyone can bring an idea to the room, and the room tests it against the client’s real problem. The idea that holds up wins, whoever raised it.',
   },
   {
-    image: '/assets/photos/life-3.jpg',
+    image: '/assets/photos/life-3.webp',
     alt: 'A team cheering as confetti falls over them',
     title: 'Wins are worth marking',
     text: 'We build for businesses, and through the Scalric Impact initiative we do pro-bono technology work for NGOs. When a launch goes live or a partner reaches more people, we stop and celebrate it together.',
@@ -34,8 +35,15 @@ const expect = [
 
 /** Life at Scalric: a banner, then alternating photo and text rows, then what to expect. */
 export default function LifePage() {
+  const mobile = useMobile();
   return <main className="life">
-    <section className="life-hero">
+    {mobile ? <section className="life-hero-m">
+      <img src={heroSlides[0]} alt="" fetchPriority="high" decoding="async" />
+      <div className="life-hero-m-box">
+        <h1>Life at Scalric</h1>
+        <p>Good work comes from people who trust each other. Here is what that looks like day to day.</p>
+      </div>
+    </section> : <section className="life-hero">
       <div className="life-hero-bg" aria-hidden="true">{heroSlides.map((src, i) => <img key={src} className="life-slide" style={{ '--n': i }} src={src} alt="" decoding="async" fetchPriority={i === 0 ? 'high' : undefined} />)}</div>
       <div className="life-hero-inner">
         <div className="life-hero-box">
@@ -43,7 +51,7 @@ export default function LifePage() {
           <p>Good work comes from people who trust each other. Here is what that looks like day to day.</p>
         </div>
       </div>
-    </section>
+    </section>}
     <section className="life-intro">
       <Reveal>
         <h2>What it is like to work here</h2>

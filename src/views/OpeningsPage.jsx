@@ -2,6 +2,7 @@
 import React from 'react';
 import { useRoles } from '../lib/roles.js';
 import { Link, Eyebrow } from '../components/UI.jsx';
+import { useMobile } from '../lib/useMobile.js';
 
 const PAGE_SIZES = [5, 10, 20];
 const FILTERS = [['location', 'Location', 'All locations'], ['team', 'Team', 'All teams'], ['workMode', 'Work mode', 'All work modes']];
@@ -31,6 +32,7 @@ const unique = (roles, key) => [...new Set(roles.map((role) => role[key]).filter
 
 export default function OpeningsPage({ search = '' }) {
   const { roles, loaded } = useRoles();
+  const mobile = useMobile();
   const [state, setState] = React.useState(() => readParams(new URLSearchParams(search)));
   const update = (changes) => setState((current) => ({ ...current, page: 1, ...changes }));
   React.useEffect(() => writeParams(state), [state]);
@@ -52,7 +54,8 @@ export default function OpeningsPage({ search = '' }) {
   const track = (slug) => window.dispatchEvent(new CustomEvent('scalric:analytics', { detail: { event: 'careers_view_role_click', slug } }));
 
   return <main className="opn">
-    <section className="opn-hero"><div className="container">
+    {mobile && <img className="m-banner-photo" src="/assets/photos/careers-banner.webp" alt="" fetchPriority="high" decoding="async" />}
+    <section className={`opn-hero${mobile ? ' opn-hero-m' : ''}`}><div className="container">
       <div className="breadcrumbs"><Link href="/">Home</Link><span>/</span><Link href="/careers/openings">Careers</Link><span>/</span><span>Open roles</span></div>
       <Eyebrow>OPEN OPPORTUNITIES</Eyebrow>
       <h1>Find your role</h1>
@@ -66,7 +69,7 @@ export default function OpeningsPage({ search = '' }) {
     </div></section>
 
     <section className="opn-results"><div className="container">
-      {!loaded ? <p className="opn-note">Loading roles…</p> : !roles.length ? <div className="opn-empty"><h2>No open roles right now</h2><p>We’re growing with intention. Tell us what you’d bring and we’ll be in touch.</p><Link href="/contact?intent=careers" className="button button-green">Express your interest</Link></div> : <>
+      {!loaded ? <div className="opn-table opn-skeleton" aria-hidden="true">{[0, 1, 2, 3, 4].map((i) => <div key={i} className="opn-row"><span /><span /><span /><span /><span /></div>)}</div> : !roles.length ? <div className="opn-empty"><h2>No open roles right now</h2><p>We’re growing with intention. Tell us what you’d bring and we’ll be in touch.</p><Link href="/contact?intent=careers" className="button button-green">Express your interest</Link></div> : <>
         <div className="opn-bar" aria-live="polite">
           <p>{results.length ? <>Showing <b>{start + 1}–{start + visible.length}</b> of <b>{results.length}</b> {results.length === 1 ? 'role' : 'roles'}</> : 'No roles match your search'}</p>
           <div className="opn-controls">

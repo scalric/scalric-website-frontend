@@ -40,8 +40,8 @@ export function Eyebrow({ children, light = false }) {
   return <span className={`eyebrow${light ? ' eyebrow-light' : ''}`}><i />{children}</span>;
 }
 
-export function PageIntro({ eyebrow, title, text, dark = false }) {
-  return <section className={`page-intro${dark ? ' page-intro-dark' : ''}`}>
+export function PageIntro({ eyebrow, title, text, dark = false, className = '' }) {
+  return <section className={`page-intro${dark ? ' page-intro-dark' : ''}${className ? ` ${className}` : ''}`}>
     <div className="container page-intro-inner"><Eyebrow light={dark}>{eyebrow}</Eyebrow>
       <h1>{title}</h1><p>{text}</p></div>
   </section>;

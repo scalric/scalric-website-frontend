@@ -8,7 +8,7 @@ export default function WhyChoose() {
   return <section className="section why-section" id="why-choose-us"><div className="container">
     <div className="why-grid">
       <Reveal className="why-hero">
-        <img className="why-hero-bg" src="/assets/photos/why-handshake.jpg" alt="" loading="lazy" decoding="async" />
+        <img className="why-hero-bg" src="/assets/photos/why-handshake.webp" alt="" loading="lazy" decoding="async" />
         <span className="why-pill">Why choose Scalric</span>
         <h2>Technology and strategy,<br />built around your outcome</h2>
         <Link href="/what-we-do" className="why-link">Explore what we do <Arrow diagonal /></Link>

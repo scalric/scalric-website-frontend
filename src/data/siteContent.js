@@ -15,7 +15,7 @@ export const insights = [
     tags: ['Data & Analytics'], status: 'editorial-preview', publishDate: null,
     title: 'From data to decisions: making information work harder',
     dek: 'A practical perspective on bringing data, people and business priorities into one decision system.',
-    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-data-team.jpg', featured: true, source: null,
+    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-data-team.webp', featured: true, source: null,
     body: [
       { heading: 'A better question to start with', text: 'The value of data is measured in the decisions it helps people make. Begin with the decision, then work backwards to the information, ownership and process it needs.' },
       { heading: 'Connect the operating model', text: 'Technology choices matter, but so do trusted definitions, clear accountability and the routines that turn insight into action.' },
@@ -27,7 +27,7 @@ export const insights = [
     tags: ['Artificial Intelligence'], status: 'editorial-preview', publishDate: null,
     title: 'AI with purpose: moving from possibility to operating value',
     dek: 'How organizations can frame AI around a meaningful business problem and a responsible path to scale.',
-    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-ai-team.jpg', featured: true, source: null,
+    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-ai-team.webp', featured: true, source: null,
     body: [
       { heading: 'Start with the work', text: 'A useful AI opportunity starts with a task, decision or service that can be made clearer, faster or more helpful.' },
       { heading: 'Design the conditions', text: 'Data access, human oversight, security and adoption need to be considered alongside model selection.' },
@@ -39,7 +39,7 @@ export const insights = [
     tags: ['Automation'], status: 'editorial-preview', publishDate: null,
     title: 'Automation that makes the whole journey simpler',
     dek: 'A systems view of automation can reduce friction for customers and the teams who support them.',
-    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-automation.jpg', featured: true, source: null,
+    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-automation.webp', featured: true, source: null,
     body: [
       { heading: 'Look across the journey', text: 'Automating one step can move effort somewhere else. Map the end-to-end experience before deciding where technology can help.' },
       { heading: 'Keep people in the loop', text: 'Design clear ways to review exceptions and improve the process as conditions change.' },
@@ -51,7 +51,7 @@ export const insights = [
     tags: ['SaaS & Software'], status: 'editorial-preview', publishDate: null,
     title: 'Software people keep using: building around the task',
     dek: 'What separates a SaaS product people rely on from one they tolerate, and how to design for it from the start.',
-    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-saas.jpg', featured: false, source: null,
+    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-saas.webp', featured: false, source: null,
     body: [
       { heading: 'Start from the task', text: 'A useful product makes one valuable task easier to understand, complete and improve. Map that task in detail before deciding which features it needs.' },
       { heading: 'Design for the whole lifecycle', text: 'Onboarding, daily use, support and upgrades shape retention as much as the core functionality. Plan each stage deliberately.' },
@@ -63,7 +63,7 @@ export const insights = [
     tags: ['Cloud & Infrastructure'], status: 'editorial-preview', publishDate: null,
     title: 'Cloud foundations that can grow with the business',
     dek: 'Practical choices about architecture, cost and reliability, made before scale makes them expensive to change.',
-    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-cloud.jpg', featured: false, source: null,
+    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-cloud.webp', featured: false, source: null,
     body: [
       { heading: 'Design for change', text: 'Modular services, clear interfaces and infrastructure defined as code make systems easier to evolve without disruption.' },
       { heading: 'Balance cost and resilience', text: 'Right-size capacity, track spend by workload, and decide deliberately which services need high availability.' },
@@ -75,7 +75,7 @@ export const insights = [
     tags: ['Artificial Intelligence'], status: 'editorial-preview', publishDate: null,
     title: 'Responsible AI in everyday operations',
     dek: 'How teams can bring AI into routine work with clear ownership, human review and measurable results.',
-    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-ai-team.jpg', featured: false, source: null,
+    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-ai-team.webp', featured: false, source: null,
     body: [
       { heading: 'Pick a task, not a technology', text: 'Start with a repeated task where speed, accuracy or consistency matters, and define what success looks like before testing any tool.' },
       { heading: 'Keep a human in the loop', text: 'Decide where people review, approve or override AI output, and make those points visible in the workflow.' },
@@ -87,7 +87,7 @@ export const insights = [
     tags: ['Data & Analytics'], status: 'editorial-preview', publishDate: null,
     title: 'Trusted data before dashboards',
     dek: 'Agreed definitions and clear ownership matter more than the next chart. Here is where to start.',
-    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-data-team.jpg', featured: false, source: null,
+    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-data-team.webp', featured: false, source: null,
     body: [
       { heading: 'Agree on definitions', text: 'When two teams report the same metric differently, decisions slow down. Write down what each key measure means and how it is calculated.' },
       { heading: 'Assign data ownership', text: 'Every critical dataset needs a named owner who is accountable for quality, access and updates.' },
@@ -99,7 +99,7 @@ export const insights = [
     tags: ['SaaS & Software'], status: 'editorial-preview', publishDate: null,
     title: 'Pricing as part of product design',
     dek: 'Packaging and pricing shape what customers value and how the product grows. Treat them as design decisions.',
-    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-saas.jpg', featured: false, source: null,
+    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-saas.webp', featured: false, source: null,
     body: [
       { heading: 'Price the value, not the features', text: 'Customers buy outcomes. Group capabilities around the results they deliver, so each tier has a clear purpose.' },
       { heading: 'Keep the path to upgrade clear', text: 'Users should understand when and why to move up a tier, without surprises or artificial limits.' },
@@ -111,7 +111,7 @@ export const insights = [
     tags: ['Automation'], status: 'editorial-preview', publishDate: null,
     title: 'Automate the exceptions, not just the rules',
     dek: 'Routine cases are the easy part. Designing for the exceptions is where automation earns trust.',
-    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-automation.jpg', featured: false, source: null,
+    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-automation.webp', featured: false, source: null,
     body: [
       { heading: 'Map the edge cases first', text: 'Before automating a process, list the unusual cases that break the standard path and decide how each should be handled.' },
       { heading: 'Route exceptions to people', text: 'Build clear handoffs, with context attached, so a person can resolve the case without starting again.' },
@@ -123,7 +123,7 @@ export const insights = [
     tags: ['Cloud & Infrastructure'], status: 'editorial-preview', publishDate: null,
     title: 'Observability: knowing what your systems are doing',
     dek: 'You cannot improve systems you cannot see. Good monitoring turns incidents into learning.',
-    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-cloud.jpg', featured: false, source: null,
+    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-cloud.webp', featured: false, source: null,
     body: [
       { heading: 'Measure what users experience', text: 'Track response times, errors and completed tasks from the user’s point of view, not only server health.' },
       { heading: 'Make logs and traces useful', text: 'Structured logs and traces tied to a single request make it faster to find the cause of a problem.' },
@@ -135,7 +135,7 @@ export const insights = [
     tags: ['Data & Analytics'], status: 'editorial-preview', publishDate: null,
     title: 'Metrics people actually use: measuring what matters to the decision',
     dek: 'A good measure answers a question someone is already asking. Start there and keep the set small.',
-    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-data-team.jpg', featured: false, source: null,
+    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-data-team.webp', featured: false, source: null,
     body: [
       { heading: 'Start from the decision', text: 'List the decisions a team makes each week, then choose the few numbers that would change what they do.' },
       { heading: 'Agree on one definition', text: 'When two teams define the same metric differently, trust drops. Write the definition once and share it.' },
@@ -147,7 +147,7 @@ export const insights = [
     tags: ['Artificial Intelligence'], status: 'editorial-preview', publishDate: null,
     title: 'Choosing the first AI use case: start where the work is repeatable',
     dek: 'The best first project is a clear, bounded task where better speed or consistency is easy to recognise.',
-    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-ai-team.jpg', featured: false, source: null,
+    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-ai-team.webp', featured: false, source: null,
     body: [
       { heading: 'Look for repeatable work', text: 'Tasks that follow a pattern, use available information and have a clear definition of done are good candidates.' },
       { heading: 'Keep people in charge', text: 'Design the first release so a person reviews the output, and capture where they correct it.' },
@@ -159,7 +159,7 @@ export const insights = [
     tags: ['Automation'], status: 'editorial-preview', publishDate: null,
     title: 'Automation with people in the loop: knowing when to hand over',
     dek: 'Automation works best when it handles the routine and hands the unusual to a person with the right context.',
-    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-automation.jpg', featured: false, source: null,
+    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-automation.webp', featured: false, source: null,
     body: [
       { heading: 'Map the routine and the exception', text: 'Separate the steps that always follow the same rules from those that need judgement.' },
       { heading: 'Make the handover clear', text: 'When work moves to a person, include what has been done, what is uncertain and what is needed next.' },
@@ -171,7 +171,7 @@ export const insights = [
     tags: ['SaaS & Software'], status: 'editorial-preview', publishDate: null,
     title: 'Shipping small and learning fast: how software earns its place',
     dek: 'Small, frequent releases keep a product close to what people need and make each change easier to judge.',
-    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-saas.jpg', featured: false, source: null,
+    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-saas.webp', featured: false, source: null,
     body: [
       { heading: 'Release in thin slices', text: 'A narrow, working version in front of real users teaches more than a long build behind closed doors.' },
       { heading: 'Watch how it is used', text: 'Pair what people say with what they do in the product, and let the pattern guide the next change.' },
@@ -183,7 +183,7 @@ export const insights = [
     tags: ['Cloud & Infrastructure'], status: 'editorial-preview', publishDate: null,
     title: 'Cost-aware cloud design: building for growth without waste',
     dek: 'Cloud costs follow design decisions. Making them visible early helps a platform grow in a predictable way.',
-    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-cloud.jpg', featured: false, source: null,
+    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-cloud.webp', featured: false, source: null,
     body: [
       { heading: 'Make usage visible', text: 'Tag resources by team and purpose so it is clear what each part of the platform costs to run.' },
       { heading: 'Match capacity to demand', text: 'Scale up for busy periods and back down afterwards, rather than sizing everything for the peak.' },
@@ -195,7 +195,7 @@ export const insights = [
     tags: ['Artificial Intelligence'], status: 'editorial-preview', publishDate: null,
     title: 'Unanswered calls: the quiet leak in clinic bookings',
     dek: 'When 32% of clinic calls go unanswered, the fix is often a better first response, not more staff.',
-    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-ai-team.jpg', featured: false, source: null,
+    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-ai-team.webp', featured: false, source: null,
     body: [
       { heading: 'Why calls go missing', text: 'Reception teams are rarely careless. They are helping someone at the desk, handling a payment or stepping away for lunch when the phone rings. Calls cluster in the morning, at lunchtime and just after closing, which is exactly when staff are busiest or gone.' },
       { heading: 'What an AI phone agent can take on', text: 'An AI phone agent answers straight away, asks the reason for the call, offers open appointment slots and handles routine questions such as opening hours, location and how to prepare for a visit. It can book the visit and send a confirmation by text.' },
@@ -207,7 +207,7 @@ export const insights = [
     tags: ['Artificial Intelligence'], status: 'editorial-preview', publishDate: null,
     title: 'From missed calls to booked jobs in home services',
     dek: 'A plumber’s hands are busy when the phone rings. One example shows calls booked rising from 50% to 80% after an AI agent started answering.',
-    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-ai-team.jpg', featured: false, source: null,
+    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-ai-team.webp', featured: false, source: null,
     body: [
       { heading: 'The phone is the shop front', text: 'Most home-service work still starts with a call, and callers want an answer now: a leak, a power cut, a broken boiler. Someone on a ladder or under a sink cannot take it.' },
       { heading: 'What the agent does', text: 'The agent answers every call, asks what is wrong, collects the address and how urgent it is, and offers the next free slot. It can then text the customer a confirmation with the time and the visit details.' },
@@ -219,7 +219,7 @@ export const insights = [
     tags: ['SaaS & Software'], status: 'editorial-preview', publishDate: null,
     title: 'The app behind the order: ordering and loyalty for restaurants',
     dek: 'Around 33% of Starbucks US orders come through its app. The pattern is worth understanding even for a single café.',
-    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-saas.jpg', featured: false, source: null,
+    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-saas.webp', featured: false, source: null,
     body: [
       { heading: 'Ordering ahead removes friction', text: 'Customers who can order and pay before they arrive skip the queue and the decision made under pressure. For the café, orders arrive in an orderly stream instead of a rush at the counter.' },
       { heading: 'Loyalty gives a reason to come back', text: 'A simple points or stamp scheme inside the same app means every order builds towards something. It also tells the business who its regulars are and what they like.' },
@@ -231,7 +231,7 @@ export const insights = [
     tags: ['SaaS & Software'], status: 'editorial-preview', publishDate: null,
     title: 'Why gyms and studios are booking through their own app',
     dek: 'In one case, 62% of bookings came through a branded app. Here is why members prefer it.',
-    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-saas.jpg', featured: false, source: null,
+    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-saas.webp', featured: false, source: null,
     body: [
       { heading: 'Booking is the front door', text: 'Members want to see what is on, reserve a place and cancel in a few seconds. Every extra step, such as a phone call, an email or a message to a coach, is a reason to skip the session.' },
       { heading: 'What a branded app adds', text: 'Because the app belongs to the studio, it carries the studio’s name, timetable, memberships and notices. Members find class reminders, waiting-list updates and changes in one place.' },
@@ -243,7 +243,7 @@ export const insights = [
     tags: ['Automation'], status: 'editorial-preview', publishDate: null,
     title: 'Reply to every review: a small habit for salons and spas',
     dek: '80% of people pick businesses that reply to every review. Booking and review replies work best together.',
-    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-automation.jpg', featured: false, source: null,
+    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-automation.webp', featured: false, source: null,
     body: [
       { heading: 'Replies are read by future customers', text: 'A reply is written to the reviewer, but the audience is everyone who reads the page afterwards. A calm, specific answer to a complaint says more about a salon than the complaint does.' },
       { heading: 'Make replying part of the routine', text: 'The reason replies slip is simple: nobody owns them. Give the task to one person, set aside a short slot each day and use a few reply templates as starting points rather than finished text.' },
@@ -255,7 +255,7 @@ export const insights = [
     tags: ['Data & Analytics'], status: 'editorial-preview', publishDate: null,
     title: 'Target Canada: a $5.4B lesson in launching before the systems are ready',
     dek: 'The 2015 exit from Canada cost $5.4B. The lesson is about checking the systems behind the shelves before opening the doors.',
-    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-data-team.jpg', featured: false, source: null,
+    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-data-team.webp', featured: false, source: null,
     body: [
       { heading: 'What happened', text: 'Target entered Canada with a fast roll-out of stores and left in 2015 with a loss of $5.4B. As widely reported at the time, stock and supply-chain problems left customers facing gaps on the shelves.' },
       { heading: 'Where an independent check was missing', text: 'A supply chain runs on data: what each product is, how it is packed, how much is on hand and when more arrives. If that data is wrong, every system built on it is wrong too, however modern the software looks.' },
@@ -267,7 +267,7 @@ export const insights = [
     tags: ['Cloud & Infrastructure'], status: 'editorial-preview', publishDate: null,
     title: 'Southwest Airlines: when one system could not recover from disruption',
     dek: 'The 2022 holiday breakdown cost $1.2B. Resilience means planning for the day everything goes wrong at once.',
-    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-cloud.jpg', featured: false, source: null,
+    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-cloud.webp', featured: false, source: null,
     body: [
       { heading: 'What happened', text: 'Over the 2022 holiday period a wave of disruption turned into a system breakdown, and the airline lost $1.2B. Travellers were stranded, and the operation took days to return to normal.' },
       { heading: 'Where an independent check was missing', text: 'Systems are usually tested on ordinary days. The question that decides resilience is what happens on the worst day, when many things fail together and people need the tools most.' },
@@ -279,7 +279,7 @@ export const insights = [
     tags: ['Cloud & Infrastructure'], status: 'editorial-preview', publishDate: null,
     title: 'Knight Capital: $440M in one morning of bad code',
     dek: 'In 2012 a single software release cost $440M in one morning. Releases need the same care as the money they touch.',
-    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-cloud.jpg', featured: false, source: null,
+    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-cloud.webp', featured: false, source: null,
     body: [
       { heading: 'What happened', text: 'A faulty software release reached live trading in 2012. Within a single morning the firm had lost $440M.' },
       { heading: 'Where an independent check was missing', text: 'The risk sat in the release itself: how the new code was put live, whether every system received the same version and whether anyone could stop it quickly once it misbehaved.' },
@@ -291,7 +291,7 @@ export const insights = [
     tags: ['Data & Analytics'], status: 'editorial-preview', publishDate: null,
     title: 'Zillow Offers: when the pricing model was trusted too far',
     dek: 'A $422M pricing-model loss in 2021 shows why models need independent challenge, especially when they spend real money.',
-    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-data-team.jpg', featured: false, source: null,
+    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-data-team.webp', featured: false, source: null,
     body: [
       { heading: 'What happened', text: 'Zillow Offers relied on a pricing model to set the prices it paid, and in the third quarter of 2021 the losses from that model reached $422M.' },
       { heading: 'Where an independent check was missing', text: 'A model is only as good as the conditions it was built in. When the market shifts, a model trained on earlier patterns can be confidently wrong, and the people closest to it may be the last to question it.' },
@@ -303,7 +303,7 @@ export const insights = [
     tags: ['SaaS & Software'], status: 'editorial-preview', publishDate: null,
     title: 'Revlon: the orders it could not ship',
     dek: 'In 2018 orders that could not ship cost Revlon $64M. A big system change needs a way back.',
-    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-saas.jpg', featured: false, source: null,
+    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-saas.webp', featured: false, source: null,
     body: [
       { heading: 'What happened', text: 'Orders piled up that the company could not ship, at a cost of $64M. As widely reported, the trouble followed a major change to the systems that run operations.' },
       { heading: 'Where an independent check was missing', text: 'Big system changes are usually tested in pieces, and each piece passes. What often goes untested is the whole flow, from order to warehouse to delivery, under real volume.' },
@@ -315,7 +315,7 @@ export const insights = [
     tags: ['SaaS & Software'], status: 'editorial-preview', publishDate: null,
     title: 'Hertz: paying for a website it threw away',
     dek: 'In 2018 Hertz paid $32M for a site it discarded. Judging a digital build early is cheaper than judging it at the end.',
-    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-saas.jpg', featured: false, source: null,
+    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-saas.webp', featured: false, source: null,
     body: [
       { heading: 'What happened', text: 'Hertz spent $32M on a new website that it ultimately discarded rather than launch.' },
       { heading: 'Where an independent check was missing', text: 'In long projects the supplier reports progress and the client mostly sees status reports. Without someone independent looking at the actual product, the gap between what is reported and what exists can grow unseen.' },
@@ -342,8 +342,8 @@ export const pagesForSearch = [
 
 
 export const proofStats = [
-  { value: 500, suffix: '+', label: 'Businesses supported', sub: 'Discounted digital and SaaS support', verified: false },
-  { value: 100, suffix: '+', label: 'NGOs supported', sub: 'Technology and digital support, pro bono', verified: false },
+  { value: 500, suffix: '+', label: 'Businesses targeted', sub: 'Discounted digital and SaaS support', verified: false },
+  { value: 100, suffix: '+', label: 'NGOs targeted', sub: 'Technology and digital support, pro bono', verified: false },
   { value: 1000, suffix: '+', label: 'Impact target', sub: 'Long-term goal for the initiative', verified: false },
 ];
 

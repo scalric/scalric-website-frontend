@@ -28,6 +28,8 @@ function ScrollStatement() {
       if (!box) return;
       const start = window.innerHeight * 0.85;
       const end = window.innerHeight * 0.35;
+      // once the statement has reached the upper part of the screen (e.g. after jumping to #impact) show it fully lit
+      if (box.top <= window.innerHeight * 0.5) { setProgress(1); return; }
       setProgress(Math.min(1, Math.max(0, (start - box.top) / (start - end + box.height * 0.4))));
     };
     const onScroll = () => { if (!frame) frame = requestAnimationFrame(update); };
@@ -47,24 +49,24 @@ function ScrollStatement() {
 }
 
 const audiences = [
-  { title: 'Local businesses', text: 'Discounted digital and SaaS support, so growing businesses can use good technology without the usual cost', image: '/assets/photos/metric-businesses.png', video: '/assets/videos/local-businesses.mp4', tag: 'Discounted support' },
+  { title: 'Local businesses', text: 'Discounted digital and SaaS support, so growing businesses can use good technology without the usual cost', image: '/assets/photos/metric-businesses.webp', video: '/assets/videos/local-businesses.mp4', tag: 'Discounted support' },
   { title: 'Practical technology', text: 'Tools designed around a real need, shaped with the people who will use them every day', image: '/assets/photos/metric-tech.webp', video: '/assets/videos/practical-technology.mp4', tag: 'Built around need' },
-  { title: 'Artists & creators', text: 'Simple digital tools so artists can show their work, take bookings and reach buyers', image: '/assets/photos/impact-artists.jpg', video: '/assets/videos/impact-artists.mp4', tag: 'Creative' },
-  { title: 'Photography studios', text: 'Online booking, galleries and client delivery that save studios hours every week', image: '/assets/photos/impact-photo-studios.jpg', video: '/assets/videos/impact-photo-studios.mp4', tag: 'Creative' },
-  { title: 'Event & wedding photographers', text: 'Packages, proofing and payments handled in one place, from first enquiry to final album', image: '/assets/photos/impact-event-photographers.jpg', video: '/assets/videos/impact-event-photographers.mp4', tag: 'Creative' },
-  { title: 'Yoga studios', text: 'Class schedules, memberships and reminders that keep students coming back', image: '/assets/photos/impact-yoga.jpg', video: '/assets/videos/impact-yoga.mp4', tag: 'Health & wellness' },
-  { title: 'Dental clinics', text: 'Appointment booking and patient follow-ups that cut missed visits', image: '/assets/photos/impact-dental.jpg', video: '/assets/videos/impact-dental.mp4', tag: 'Health & wellness' },
-  { title: 'Hair transplant clinics', text: 'Consultation flows and secure patient records that build trust before the first visit', image: '/assets/photos/impact-hair-clinics.jpg', video: '/assets/videos/impact-hair-clinics.mp4', tag: 'Health & wellness' },
-  { title: 'Interior designers', text: 'Project portfolios, quotes and client approvals brought together in one clear workspace', image: '/assets/photos/impact-interiors.jpg', video: '/assets/videos/impact-interiors.mp4', tag: 'Home & design' },
-  { title: 'Electrical services', text: 'Job requests, scheduling and invoicing that keep small crews organised and paid on time', image: '/assets/photos/impact-electrical.jpg', video: '/assets/videos/impact-electrical.mp4', tag: 'Home services' },
-  { title: 'Cafés & casual dining', text: 'Online ordering, menus and reservations that turn local regulars into steady revenue', image: '/assets/photos/impact-cafes.jpg', video: '/assets/videos/impact-cafes.mp4', tag: 'Hospitality' },
-  { title: 'Restaurants', text: 'Table management and guest insights that make every service run smoother', image: '/assets/photos/impact-fine-dining.jpg', video: '/assets/videos/impact-fine-dining.mp4', tag: 'Hospitality' },
-  { title: 'Football clubs', text: 'Team rosters, fixtures and fee collection without the spreadsheets', image: '/assets/photos/impact-football.jpg', video: '/assets/videos/impact-football.mp4', tag: 'Sports' },
-  { title: 'Tennis academies', text: 'Court bookings, coaching schedules and memberships in a single easy system', image: '/assets/photos/impact-tennis.jpg', video: '/assets/videos/impact-tennis.mp4', tag: 'Sports' },
-  { title: 'Dance studios', text: 'Class sign-ups, recital planning and parent updates handled with less effort', image: '/assets/photos/impact-dance.jpg', video: '/assets/videos/impact-dance.mp4', tag: 'Creative' },
-  { title: 'Music schools', text: 'Lesson scheduling, practice tracking and payments that let teachers focus on teaching', image: '/assets/photos/impact-music.jpg', video: '/assets/videos/impact-music.mp4', tag: 'Creative' },
-  { title: 'Gyms & fitness centres', text: 'Memberships, check-ins and progress tracking that help members stay on course', image: '/assets/photos/impact-gyms.jpg', video: '/assets/videos/impact-gyms.mp4', tag: 'Health & wellness' },
-  { title: 'Salons & beauty', text: 'Online booking, stylist calendars and loyalty rewards that fill the diary', image: '/assets/photos/impact-salons.jpg', video: '/assets/videos/impact-salons.mp4', tag: 'Beauty' },
+  { title: 'Artists & creators', text: 'Simple digital tools so artists can show their work, take bookings and reach buyers', image: '/assets/photos/impact-artists.webp', video: '/assets/videos/impact-artists.mp4', tag: 'Creative' },
+  { title: 'Photography studios', text: 'Online booking, galleries and client delivery that save studios hours every week', image: '/assets/photos/impact-photo-studios.webp', video: '/assets/videos/impact-photo-studios.mp4', tag: 'Creative' },
+  { title: 'Event & wedding photographers', text: 'Packages, proofing and payments handled in one place, from first enquiry to final album', image: '/assets/photos/impact-event-photographers.webp', video: '/assets/videos/impact-event-photographers.mp4', tag: 'Creative' },
+  { title: 'Yoga studios', text: 'Class schedules, memberships and reminders that keep students coming back', image: '/assets/photos/impact-yoga.webp', video: '/assets/videos/impact-yoga.mp4', tag: 'Health & wellness' },
+  { title: 'Dental clinics', text: 'Appointment booking and patient follow-ups that cut missed visits', image: '/assets/photos/impact-dental.webp', video: '/assets/videos/impact-dental.mp4', tag: 'Health & wellness' },
+  { title: 'Hair transplant clinics', text: 'Consultation flows and secure patient records that build trust before the first visit', image: '/assets/photos/impact-hair-clinics.webp', video: '/assets/videos/impact-hair-clinics.mp4', tag: 'Health & wellness' },
+  { title: 'Interior designers', text: 'Project portfolios, quotes and client approvals brought together in one clear workspace', image: '/assets/photos/impact-interiors.webp', video: '/assets/videos/impact-interiors.mp4', tag: 'Home & design' },
+  { title: 'Electrical services', text: 'Job requests, scheduling and invoicing that keep small crews organised and paid on time', image: '/assets/photos/impact-electrical.webp', video: '/assets/videos/impact-electrical.mp4', tag: 'Home services' },
+  { title: 'Cafés & casual dining', text: 'Online ordering, menus and reservations that turn local regulars into steady revenue', image: '/assets/photos/impact-cafes.webp', video: '/assets/videos/impact-cafes.mp4', tag: 'Hospitality' },
+  { title: 'Restaurants', text: 'Table management and guest insights that make every service run smoother', image: '/assets/photos/impact-fine-dining.webp', video: '/assets/videos/impact-fine-dining.mp4', tag: 'Hospitality' },
+  { title: 'Football clubs', text: 'Team rosters, fixtures and fee collection without the spreadsheets', image: '/assets/photos/impact-football.webp', video: '/assets/videos/impact-football.mp4', tag: 'Sports' },
+  { title: 'Tennis academies', text: 'Court bookings, coaching schedules and memberships in a single easy system', image: '/assets/photos/impact-tennis.webp', video: '/assets/videos/impact-tennis.mp4', tag: 'Sports' },
+  { title: 'Dance studios', text: 'Class sign-ups, recital planning and parent updates handled with less effort', image: '/assets/photos/impact-dance.webp', video: '/assets/videos/impact-dance.mp4', tag: 'Creative' },
+  { title: 'Music schools', text: 'Lesson scheduling, practice tracking and payments that let teachers focus on teaching', image: '/assets/photos/impact-music.webp', video: '/assets/videos/impact-music.mp4', tag: 'Creative' },
+  { title: 'Gyms & fitness centres', text: 'Memberships, check-ins and progress tracking that help members stay on course', image: '/assets/photos/impact-gyms.webp', video: '/assets/videos/impact-gyms.mp4', tag: 'Health & wellness' },
+  { title: 'Salons & beauty', text: 'Online booking, stylist calendars and loyalty rewards that fill the diary', image: '/assets/photos/impact-salons.webp', video: '/assets/videos/impact-salons.mp4', tag: 'Beauty' },
 ];
 
 /** Loads and plays a card video only while it is near the viewport, so 19 clips don't all download and decode at once. */
@@ -143,9 +145,9 @@ function StoryPanels() {
 }
 
 const steps = [
-  ['01', 'Listen closely', 'Understand the people, goals and constraints behind the challenge', '/assets/photos/impact-listen-new.jpg'],
-  ['02', 'Build together', 'Shape an appropriate technology response with the organisation', '/assets/photos/impact-build-new.jpg'],
-  ['03', 'Learn and improve', 'Review what is working and identify what should happen next', '/assets/photos/impact-learn-new.jpg'],
+  ['01', 'Listen closely', 'Understand the people, goals and constraints behind the challenge', '/assets/photos/impact-listen-new.webp'],
+  ['02', 'Build together', 'Shape an appropriate technology response with the organisation', '/assets/photos/impact-build-new.webp'],
+  ['03', 'Learn and improve', 'Review what is working and identify what should happen next', '/assets/photos/impact-learn-new.webp'],
 ];
 
 export default function ImpactSections({ children }) {

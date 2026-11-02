@@ -5,9 +5,9 @@ import { Link, Arrow, Eyebrow, PageIntro, Reveal, TypedText } from '../component
 import { processSteps, workingPrinciples } from '../data/siteContent.js';
 
 const principles = [
-  ['Start with the problem', 'Understand the market, people and operating context before choosing a solution.', '/assets/photos/principle-start.png'],
-  ['Connect the disciplines', 'Bring business thinking and technology into one clear path from intent to implementation.', '/assets/photos/principle-connect.png'],
-  ['Build with care', 'Design for the people who will use, run and evolve what we put into the world.', '/assets/photos/principle-care.png'],
+  ['Start with the problem', 'Understand the market, people and operating context before choosing a solution.', '/assets/photos/principle-start.webp'],
+  ['Connect the disciplines', 'Bring business thinking and technology into one clear path from intent to implementation.', '/assets/photos/principle-connect.webp'],
+  ['Build with care', 'Design for the people who will use, run and evolve what we put into the world.', '/assets/photos/principle-care.webp'],
 ];
 
 export default function CompanyPage() {

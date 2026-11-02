@@ -1,4 +1,6 @@
+import { Manrope } from 'next/font/google';
 import Analytics from '@/components/Analytics.jsx';
+import GapGuard from '@/components/GapGuard.jsx';
 import '@/styles/styles.css';
 import '@/styles/premium.css';
 import '@/styles/theme.css';
@@ -9,6 +11,7 @@ import '@/banners-fit.css';
 import '@/industries-target.css';
 import '@/costly-mistakes.css';
 import '@/success-stories.css';
+import '@/styles/typography.css';
 import '@/admin/admin.css';
 
 const description = 'Scalric studies complex problems and builds technology and consulting solutions for measurable business and social impact.';
@@ -21,12 +24,13 @@ export const metadata = {
 
 export const viewport = { width: 'device-width', initialScale: 1, themeColor: '#ffffff' };
 
+// Self-hosted at build time: no request to Google, no late font swap (which made text jump after first paint).
+const manrope = Manrope({ subsets: ['latin'], weight: ['300', '400', '500', '600', '700', '800'], display: 'swap', variable: '--font-manrope' });
+
 export default function RootLayout({ children }) {
-  return <html lang="en">
+  return <html lang="en" className={manrope.variable}>
     <head>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
     </head>
-    <body><Analytics />{children}</body>
+    <body><Analytics /><GapGuard />{children}</body>
   </html>;
 }
