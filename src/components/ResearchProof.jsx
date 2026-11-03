@@ -1,12 +1,13 @@
 import React from 'react';
 import { kpiReads, marketSizes, researchKpis, researchSources } from '../data/research.js';
 import { Eyebrow, Reveal } from './UI.jsx';
-import { Count, ReadLink } from './ResearchViz.jsx';
+import { Count, Donut, ReadLink } from './ResearchViz.jsx';
 
 /** Home proof band: one headline market size with a country split, then five sourced numbers beside it. */
 export default function ResearchProof() {
   const [lead, ...rest] = researchKpis;
   const total = marketSizes.reduce((sum, [, size]) => sum + size, 0);
+  const [active, setActive] = React.useState(null); // legend row being hovered or focused
   return <section className="section rs-proof" id="market-proof"><div className="container">
     <Reveal className="rs-head">
       <Eyebrow>MARKET RESEARCH</Eyebrow>
@@ -17,10 +18,14 @@ export default function ResearchProof() {
       <Reveal className="rs-lead">
         <b><Count value={lead[0]} duration={2000} /></b>
         <span>{lead[1]}</span>
-        <div className="rs-split" role="img" aria-label={marketSizes.map(([n, s]) => `${n} ${s} million`).join(', ')}>
-          {marketSizes.map(([name, size], i) => <i key={name} className={`rs-seg rs-seg-${i}`} style={{ flexGrow: size, '--i': i }} />)}
+        <div className="rs-lead-chart">
+          <Donut segments={marketSizes.map(([name, value]) => ({ name, value }))} active={active} label={marketSizes.map(([n, s]) => `${n} ${s} million`).join(', ')}>
+            <strong>{marketSizes.length}</strong><small>markets</small>
+          </Donut>
+          <ul className="rs-legend">{marketSizes.map(([name, size], i) => <li key={name} tabIndex={0} className={active === i ? 'is-active' : undefined}
+            onMouseEnter={() => setActive(i)} onMouseLeave={() => setActive(null)} onFocus={() => setActive(i)} onBlur={() => setActive(null)}>
+            <i className={`rs-seg-${i}`} /><span>{name}</span><b>{size}M</b><small>{Math.round(size / total * 100)}%</small></li>)}</ul>
         </div>
-        <ul className="rs-legend">{marketSizes.map(([name, size], i) => <li key={name}><i className={`rs-seg-${i}`} /><span>{name}</span><b>{size}M</b><small>{Math.round(size / total * 100)}%</small></li>)}</ul>
         <a href={researchSources[lead[2]]} target="_blank" rel="noopener noreferrer">{lead[3]} ↗</a>
       </Reveal>
       <div className="rs-kpis">{rest.map(([value, text, key, source], i) => <Reveal key={value} delay={i * 70}>

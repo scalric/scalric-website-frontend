@@ -43,6 +43,33 @@ export function Ring({ percent, children, size = 132 }) {
   </div>;
 }
 
+/** Multi-segment donut: each `{ name, value }` arc draws in (in order) when seen; `active` dims the others; children sit in the middle. */
+export function Donut({ segments, active = null, size = 140, label, children }) {
+  const [ref, seen] = useInView({ threshold: 0.3 });
+  const r = 38;
+  const c = 2 * Math.PI * r;
+  const gap = 1.4; // space between arcs
+  const minLength = 3; // keeps a tiny share (Canada, about 1%) visible
+  const total = segments.reduce((sum, { value }) => sum + value, 0);
+  let offset = 0;
+  const arcs = segments.map(({ name, value }) => {
+    const share = value / total * c;
+    const length = Math.max(minLength, share - gap);
+    const arc = { name, length, start: offset + (share - length) / 2 }; // centred in its share so a minimum-length arc doesn't crowd its neighbour
+    offset += share;
+    return arc;
+  });
+  return <div ref={ref} className="rs-donut" style={{ width: size, height: size }} role="img" aria-label={label}>
+    <svg viewBox="0 0 100 100" aria-hidden="true">
+      <circle className="rs-donut-track" cx="50" cy="50" r={r} />
+      {arcs.map(({ name, length, start }, i) => <circle key={name} cx="50" cy="50" r={r}
+        className={`rs-donut-seg rs-donut-seg-${i}${active !== null && active !== i ? ' is-dim' : ''}`} style={{ '--i': i }}
+        strokeDasharray={seen ? `${length} ${c - length}` : `0 ${c}`} strokeDashoffset={-start} />)}
+    </svg>
+    <div className="rs-donut-label">{children}</div>
+  </div>;
+}
+
 /** Horizontal gauge: a single fill, or before → after when `from` is given. */
 export function Gauge({ percent, from, down = false }) {
   const [ref, seen] = useInView({ threshold: 0.3 });
@@ -53,11 +80,11 @@ export function Gauge({ percent, from, down = false }) {
   return <div ref={ref} className={`rs-gauge${down ? ' rs-down' : ''}`}><i className="rs-bar" style={{ width: seen ? `${percent}%` : 0 }} /></div>;
 }
 
-/** "Read: <article title>" link to the insight that covers a figure; renders nothing without a slug. */
-export function ReadLink({ slug, from }) {
+/** "Read: <article title>" link to the insight that covers a figure; renders nothing without a slug. `short` shows "Read the story" instead of the title. */
+export function ReadLink({ slug, from, short = false }) {
   const { insights } = useInsights();
   const article = insights.find((item) => item.slug === slug);
   if (!article) return null;
   const track = () => window.dispatchEvent(new CustomEvent('scalric:analytics', { detail: { event: 'research_read_click', slug, from } }));
-  return <Link href={`/insights/${slug}`} className="rs-read" onClick={track} title={article.title}><span>Read: {article.title}</span><i aria-hidden="true">→</i></Link>;
+  return <Link href={`/insights/${slug}`} className="rs-read" onClick={track} title={article.title}><span>{short ? 'Read the story' : `Read: ${article.title}`}</span><i aria-hidden="true">→</i></Link>;
 }

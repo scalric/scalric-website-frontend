@@ -29,7 +29,7 @@ export const researchKpis = [
 ];
 
 export const numberGroups = [
-  ['all', 'All 18'], ['mkt', 'Marketing'], ['dev', 'Development'], ['ai', 'AI & automation'], ['risk', 'Security'],
+  ['all', 'Highlights'], ['mkt', 'Marketing'], ['dev', 'Development'], ['ai', 'AI & automation'], ['risk', 'Security'],
 ];
 
 // [group, topic, value, text, source key, source label + year]
@@ -83,13 +83,8 @@ export const numberViz = {
 // Small businesses by country, in millions: India registered MSMEs (Dec 2025), US (2025), UK (2025), Canada (Dec 2024).
 export const marketSizes = [['India', 73], ['United States', 36.2], ['United Kingdom', 5.68], ['Canada', 1.08]];
 
-// Overview tile per group on "All 18": the row index of its headline number, and a one-line takeaway.
-export const numberSummaries = {
-  mkt: [8, 'People check you out before they call, and more of them now start with AI search.'],
-  dev: [0, 'A faster site and a smoother checkout turn the visitors you already have into sales.'],
-  ai: [11, 'Answering every call and message, at any hour, is where AI pays back first.'],
-  risk: [17, 'Small firms are targets, and one breach costs far more than prevention.'],
-};
+// "Highlights" tab: the row index of one headline number per topic, in chip order. The other tabs list every number in their topic.
+export const numberHighlights = [8, 0, 11, 17];
 
 // Article each number links to, only where an existing insight genuinely covers it. Keyed by row index in researchNumbers.
 export const numberReads = {

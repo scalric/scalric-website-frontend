@@ -46,8 +46,7 @@ export default function BuyerSection() {
       <div className="rs-detail">
         <div className="rs-detail-top" key={persona}>
           <q>{quote}</q>
-          <div className="rs-persona-stat"><Ring percent={parseFloat(stat)} size={72}><strong><Count value={stat} /></strong></Ring><small>{label}</small></div>
-          <ReadLink slug={personaReads[persona]} from="buyer" />
+          <div className="rs-persona-stat"><Ring percent={parseFloat(stat)} size={72}><strong><Count value={stat} /></strong></Ring><div><small>{label}</small><ReadLink slug={personaReads[persona]} from="buyer" short /></div></div>
           <Link className="rs-offer" href="/contact"><span><em>First offer</em>{offer}</span><i aria-hidden="true">→</i></Link>
         </div>
         <div className="rs-detail-markets">
