@@ -55,13 +55,16 @@ body main .ss-lede{max-width:28em;margin:0;font-size:clamp(16px,1.4vw,21px);line
   .ss-intro h2{font-size:clamp(34px,min(5vw,9.5vh),80px)}
 }
 @media (max-width:640px){
-  .ss-poster{grid-template-columns:repeat(3,1fr);gap:8px}
-  .ss-tile{border-radius:16px!important;--cx:50%!important;--cy:50%!important}
-  .ss-logo-box{width:88%;height:52%}
-  .ss-logo-box.is-card{width:90%;height:72%}
+  /* Same circle as the desktop view: three logo quadrants meet in the middle with the small story panel as the fourth corner */
+  .ss-poster{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+  .ss-logo-box{width:80%;height:44%}
+  .ss-logo-box.is-card{width:72%;height:48%}
   .ss-wordmark{font-size:13px}
-  .ss-panel{grid-column:1/-1;aspect-ratio:auto;border-radius:16px}
-  .ss-panel-in{padding:26px;gap:12px}
+  /* The story panel is the fourth corner of the circle, kept small: company and headline only */
+  .ss-panel-in{padding:12px;gap:6px}
+  .ss-panel .ss-panel-company{font-size:9px}
+  .ss-panel h3{font-size:13px;line-height:1.2}
+  .ss-panel .ss-panel-text,.ss-panel-facts{display:none}
 }
 
 /* Gap between the Insights hero and the Success stories section */
@@ -75,7 +78,6 @@ body main .ss-lede{max-width:28em;margin:0;font-size:clamp(16px,1.4vw,21px);line
 .ss-tile-2{transform-origin:0 100%}
 .ss-tile-3{transform-origin:100% 0}
 .ss-tile:hover,.ss-tile:focus-visible,.ss-tile.is-on{z-index:3;transform:scale(1.05)}
-@media (max-width:700px){.ss-tile,.ss-tile-2,.ss-tile-3{transform-origin:50% 50%}.ss-tile:hover,.ss-tile:focus-visible,.ss-tile.is-on{transform:scale(1.04)}}
 @media (prefers-reduced-motion:reduce){.ss-tile{transition:background .35s,box-shadow .35s}.ss-tile:hover,.ss-tile:focus-visible,.ss-tile.is-on{transform:none}}
 
 /* Keep the grown tile and its yellow ring inside the blue band, even at the largest hover size:

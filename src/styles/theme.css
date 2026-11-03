@@ -1870,7 +1870,7 @@ main>section:has(.principles-grid,.process-track,.hiring-steps){background:#eef3
   .ah-arcs .ah-shade,.ah-teal .ah-shade,.ah-wave .ah-shade{background:linear-gradient(180deg,#030e3899 0%,#030e3866 60%,#030e3833 100%)}
   .ah h1{font-size:clamp(34px,10vw,52px)}
 }
-@media (max-width:700px){.topic-chips{flex-wrap:wrap!important;overflow:visible!important}}
+@media (max-width:700px){.topic-chips{flex-wrap:nowrap!important;overflow-x:auto!important;overflow-y:hidden;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin-inline:-20px;padding-inline:20px}.topic-chips::-webkit-scrollbar{display:none}.topic-chips button{flex:0 0 auto;white-space:nowrap;scroll-snap-align:start}}
 /* Mobile menu polish */
 .mobile-menu-links>a,.mobile-nav-toggle{padding-inline:0!important}
 .mobile-menu-bottom .button{background:#1155d9!important;color:#fff!important;border:0!important}
@@ -2685,3 +2685,8 @@ body main .life-cta p,body main .life-cta h2{color:#fff!important}
 /* Contact band ("What could we make possible?"): much less space above the footer */
 .cx-section{padding-bottom:20px!important}
 .cx-section .cx-stage{padding-bottom:28px}
+
+/* Industries banner: heading is always exactly two lines and never runs over the photos */
+body main .ind-banner .ind-banner-copy h1{white-space:nowrap!important;font-size:clamp(22px,calc((36vw - 110px)/15),56px)!important;line-height:1.12}
+body main .ind-banner .ind-banner-copy h1 .typed{white-space:nowrap}
+@media (max-width:860px){body main .ind-banner .ind-banner-copy h1{font-size:clamp(24px,calc((100vw - 40px)/13.5),44px)!important;margin:14px 0 16px}body main .ind-banner .ind-banner-copy p{max-width:none;font-size:16px;line-height:1.6}}
