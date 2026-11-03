@@ -14,7 +14,7 @@ export default function WhyChoose() {
         <Link href="/what-we-do" className="why-link">Explore what we do <Arrow diagonal /></Link>
       </Reveal>
       <Reveal className="why-photo" delay={60}><img src="/assets/photos/consulting-office.webp" alt="" loading="lazy" decoding="async" /></Reveal>
-      <Reveal className="why-stat" delay={100}><small>{businesses.label}</small><div><span className="why-plus" aria-hidden="true">+</span><b><CountUp value={businesses.value} suffix="" prefix="+" /></b></div></Reveal>
+      <Reveal className="why-stat" delay={100}><div><b><CountUp value={businesses.value} suffix={businesses.suffix} /></b><small>{businesses.label}</small></div></Reveal>
       <Reveal className="why-note" delay={140}><div><b><CountUp value={ngos.value} suffix={ngos.suffix} /></b><small>{ngos.label}</small></div><p>We connect the why with the how, bringing business understanding and technology together around a clear outcome.</p></Reveal>
     </div>
   </div></section>;

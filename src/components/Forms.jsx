@@ -127,7 +127,7 @@ export function ContactForm({ inquiryType = 'business', onTypeChange }) {
       <FloatField label={intent.placeholder} wide error={errors.message}><textarea name="message" maxLength="5000" rows="5" placeholder=" " aria-invalid={Boolean(errors.message)} /><em className="ct-count">{count}/5000</em></FloatField>
     </div>
     <Consent error={errors.consent}>I agree that Scalric may contact me about this request.</Consent>
-    <button className="btn-talk ct-send" disabled={sending}><span>{sending ? 'Sending…' : 'Send your message'}</span><i aria-hidden="true">{sending ? '' : '→'}</i></button>
+    <button className="btn-talk ct-send" disabled={sending}><span>{sending ? 'Sending…' : 'Send your message'}</span></button>
     <Status status={status} />
   </form>;
 }
@@ -301,7 +301,7 @@ export function ImpactForm() {
       <Field label="What technology support would help?" wide error={errors.need}><textarea name="need" maxLength="5000" rows="4" placeholder="Tell us about the challenge you are working on" aria-invalid={Boolean(errors.need)} /></Field>
     </div>
     <Consent error={errors.consent}>I agree that Scalric may contact me about this request</Consent>
-    <button className="button button-green form-submit" disabled={sending}>{sending ? 'Sending…' : 'Share your need'} <span aria-hidden="true">↗</span></button>
+    <button className="button button-green form-submit" disabled={sending}>{sending ? 'Sending…' : 'Share your need'}</button>
     <Status status={status} />
   </form>;
 }

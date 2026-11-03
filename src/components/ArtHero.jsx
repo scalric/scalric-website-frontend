@@ -55,7 +55,7 @@ export default function ArtHero({ art = 'wave', eyebrow, title, text, children, 
         {children && <div className="ah-actions">{children}</div>}
       </div>
       {list.length > 0 && <ul className="ah-chips" aria-label="Quick links">{list.map(([label, href], i) => <li key={label} style={{ '--d': i }}>
-        {label === 'Talk to us' ? <Link href={href} className="ah-yellow"><span>{label}</span><i aria-hidden="true">→</i></Link> : href.startsWith('#') ? <a href={href}>{label}<span aria-hidden="true">↗</span></a> : <Link href={href}>{label}<span aria-hidden="true">↗</span></Link>}
+        {label === 'Talk to us' ? <Link href={href} className="ah-yellow"><span>{label}</span></Link> : href.startsWith('#') ? <a href={href}>{label}</a> : <Link href={href}>{label}</Link>}
       </li>)}</ul>}
     </div>
   </section>;

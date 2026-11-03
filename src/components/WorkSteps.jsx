@@ -34,7 +34,7 @@ export default function WorkSteps() {
           <path className="ws-line-path" pathLength="1" d="M22 -40 C22 -10 22 -10 22 0 C46 110 -2 230 22 333 C46 436 -2 560 22 667 C46 774 -2 890 22 1000" />
         </svg>
         <ol className="ws-m-steps">{steps.map((step, i) => <li key={step.title} className="ws-m-step" style={{ '--i': i }}>
-          <span className="ws-m-dot" aria-hidden="true" /><span className="ws-m-num" aria-hidden="true">{i + 1}</span>
+          <span className="ws-m-dot" aria-hidden="true" />
           <h3>{step.title}</h3><p>{step.text}</p>
         </li>)}</ol>
       </div>

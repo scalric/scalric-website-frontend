@@ -1,6 +1,7 @@
 import { Manrope } from 'next/font/google';
 import Analytics from '@/components/Analytics.jsx';
 import GapGuard from '@/components/GapGuard.jsx';
+import TitleCase from '@/components/TitleCase.jsx';
 import '@/styles/styles.css';
 import '@/styles/premium.css';
 import '@/styles/theme.css';
@@ -31,6 +32,6 @@ export default function RootLayout({ children }) {
   return <html lang="en" className={manrope.variable}>
     <head>
     </head>
-    <body><Analytics /><GapGuard />{children}</body>
+    <body><Analytics /><GapGuard /><TitleCase />{children}</body>
   </html>;
 }

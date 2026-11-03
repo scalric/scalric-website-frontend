@@ -11,6 +11,6 @@ export default function WhatWeDoHero() {
     chips={[]}
   >
     <a href="#capability-overview" className="button button-green">Explore capabilities <Arrow diagonal /></a>
-    <Link href="/contact" className="btn-talk"><span>Talk to us</span><i aria-hidden="true">→</i></Link>
+    <Link href="/contact" className="btn-talk"><span>Talk to us</span></Link>
   </ArtHero>;
 }

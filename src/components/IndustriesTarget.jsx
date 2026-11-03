@@ -1,5 +1,5 @@
 import React from 'react';
-import { Arrow, Link, Reveal } from './UI.jsx';
+import { Link, Reveal } from './UI.jsx';
 
 const icons = {
   dining: <path d="M5 3v8a2 2 0 0 0 2 2v8M9 3v8a2 2 0 0 1-2 2M17 21V3c-2 1-3 4-3 7s1 4 3 4" />,
@@ -22,7 +22,7 @@ const industries = [
 // `pos` keeps faces in frame when a photo is cropped.
 const tiles = [
   { industry: 0, image: '/assets/photos/industry-healthcare-new.webp', pos: '45% 52%' },
-  { industry: 3, image: '/assets/photos/industry-gyms-new.webp', pos: '55% 22%' },
+  { industry: 3, image: '/assets/photos/industry-photographer.webp', pos: '50% 40%' },
   { industry: 2, image: '/assets/photos/industry-restaurants-new.webp', pos: '45% 30%' },
   { industry: 4, image: '/assets/photos/industry-salons-new.webp', pos: '50% 40%' },
   { industry: 1, image: '/assets/photos/industry-home-services.webp', pos: '50% 30%' },
@@ -31,7 +31,34 @@ const tiles = [
 
 export default function IndustriesTarget() {
   const [active, setActive] = React.useState(1);
+  // Conditional rendering: when the section stacks into one column (tablet/phone), the photos come after the numbers, not before.
+  const [mobile, setMobile] = React.useState(false);
+  React.useEffect(() => {
+    const mq = window.matchMedia('(max-width: 980px)');
+    const update = () => setMobile(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
   return <section className="section it-section" id="industries-we-target" aria-labelledby="it-title"><div className="container it-wrap">
+    {mobile ? <>
+    <Reveal className="it-stats" delay={80}>
+      <h2 className="it-heading" id="it-title">Industries we<br />TARGET</h2>
+      <p className="it-lede">Each industry comes with one real number that shows the problem, or the gain from fixing it.</p>
+      <ul className="it-list">{industries.map((item, i) => <li key={item.title}>
+        <Link href={`/insights/${item.slug}`} className={`it-row${active === i ? ' is-active' : ''}`} style={{ '--tone': item.tone }} onMouseEnter={() => setActive(i)} onFocus={() => setActive(i)}>
+          <span className="it-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">{icons[item.icon]}</svg></span>
+          <strong className="it-stat">{item.stat}</strong>
+          <span className="it-row-copy"><b>{item.title}</b><span>{item.label}</span><small>{item.fix}</small></span>
+        </Link>
+      </li>)}</ul>
+    </Reveal>
+    <Reveal className="it-poster-wrap"><div className="it-grid" role="group" aria-label="Industry photos">
+      {tiles.map((tile, i) => { const item = industries[tile.industry]; return <Link key={i} href={`/insights/${item.slug}`} aria-label={`${item.title}: read the insight`} className={`it-photo${active === tile.industry ? ' is-active' : ''}`} onMouseEnter={() => setActive(tile.industry)}>
+        <img src={tile.image} alt="" loading="lazy" style={{ objectPosition: tile.pos }} />
+      </Link>; })}
+    </div></Reveal>
+    </> : <>
     <Reveal className="it-poster-wrap"><div className="it-grid" role="group" aria-label="Industry photos">
       {tiles.map((tile, i) => { const item = industries[tile.industry]; return <Link key={i} href={`/insights/${item.slug}`} aria-label={`${item.title}: read the insight`} className={`it-photo${active === tile.industry ? ' is-active' : ''}`} onMouseEnter={() => setActive(tile.industry)}>
         <img src={tile.image} alt="" loading="lazy" style={{ objectPosition: tile.pos }} />
@@ -45,9 +72,9 @@ export default function IndustriesTarget() {
           <span className="it-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">{icons[item.icon]}</svg></span>
           <strong className="it-stat">{item.stat}</strong>
           <span className="it-row-copy"><b>{item.title}</b><span>{item.label}</span><small>{item.fix}</small></span>
-          <span className="it-go" aria-hidden="true"><Arrow diagonal /></span>
         </Link>
       </li>)}</ul>
     </Reveal>
+    </>}
   </div></section>;
 }

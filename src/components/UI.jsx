@@ -13,7 +13,8 @@ export function Link({ href, children, className, onClick, ...props }) {
 }
 
 export function Arrow({ diagonal = false }) {
-  return <span className="arrow" aria-hidden="true">{diagonal ? '↗' : '→'}</span>;
+  if (diagonal) return null;
+  return <span className="arrow" aria-hidden="true">→</span>;
 }
 
 export function Reveal({ children, className = '', delay = 0 }) {
