@@ -1,14 +1,13 @@
 'use client';
 import React from 'react';
-import dynamic from 'next/dynamic';
 import { capabilities, insights, proofStats } from '../data/siteContent.js';
 import { Link, Arrow, Eyebrow, Reveal, CountUp, SplitHeading, Parallax } from '../components/UI.jsx';
 import WhyChoose from '../components/WhyChoose.jsx';
 import { ArtImage, MiniBars } from '../components/Showcase.jsx';
-const WorkSteps = dynamic(() => import('../components/WorkSteps.jsx'));
-const ContactBand = dynamic(() => import('../components/ContactBand.jsx'));
-const PurposePanel = dynamic(() => import('../components/PurposePanel.jsx'));
-const IndustriesTarget = dynamic(() => import('../components/IndustriesTarget.jsx'));
+import WorkSteps from '../components/WorkSteps.jsx';
+import ContactBand from '../components/ContactBand.jsx';
+import PurposePanel from '../components/PurposePanel.jsx';
+import IndustriesTarget from '../components/IndustriesTarget.jsx';
 
 function Hero() {
   const videoRef = React.useRef(null);
