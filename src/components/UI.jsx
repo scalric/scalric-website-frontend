@@ -82,7 +82,7 @@ export function CountUp({ value, suffix = '', prefix = '', duration = 1800, imme
     frame = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frame);
   }, [seen, value, duration]);
-  return <span ref={ref} className="count-up" aria-label={`${prefix}${value.toLocaleString()}${suffix}`}><span aria-hidden="true">{prefix}{display.toLocaleString()}{suffix}</span></span>;
+  return <span ref={ref} className="count-up" role="img" aria-label={`${prefix}${value.toLocaleString()}${suffix}`}><span aria-hidden="true">{prefix}{display.toLocaleString()}{suffix}</span></span>;
 }
 
 export function SplitHeading({ as: Tag = 'h2', lines, accent, className = '', startDelay = 0 }) {
