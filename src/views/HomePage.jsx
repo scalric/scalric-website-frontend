@@ -14,8 +14,10 @@ function Hero() {
   const [mobile, setMobile] = React.useState(false);
   const [enabled, setEnabled] = React.useState(true);
   const [playing, setPlaying] = React.useState(true);
+  const [ready, setReady] = React.useState(false);
   React.useEffect(() => {
     setMobile(window.matchMedia('(max-width: 680px)').matches);
+    setReady(true);
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || navigator.connection?.saveData) { setEnabled(false); setPlaying(false); }
   }, []);
   const toggle = () => {
@@ -25,7 +27,7 @@ function Hero() {
     if (video.paused) { video.play().catch(() => { }); setPlaying(true); } else { video.pause(); setPlaying(false); }
   };
   return <section className={`home-hero hero-city${mobile ? ' hero-m' : ''}`} id="top" aria-labelledby="hero-title">
-    {enabled && <video ref={videoRef} className="hero-city-video" src={mobile ? '/media/hero-mobile-v2.mp4' : '/media/hero-home.mp4'} autoPlay muted loop playsInline preload="auto" aria-hidden="true" tabIndex={-1} key={mobile ? 'm' : 'd'} poster={mobile ? '/assets/hero-mobile-v2-poster.webp' : '/assets/hero-home-poster.webp'} onCanPlay={(event) => { const video = event.currentTarget; video.muted = true; if (video.paused && playing) video.play().catch(() => setPlaying(false)); }} />}
+    {enabled && <video ref={videoRef} className="hero-city-video" src={ready ? (mobile ? '/media/hero-mobile-v2.mp4' : '/media/hero-home.mp4') : undefined} autoPlay muted loop playsInline preload="metadata" aria-hidden="true" tabIndex={-1} key={mobile ? 'm' : 'd'} poster={mobile ? '/assets/hero-mobile-v2-poster.webp' : '/assets/hero-home-poster.webp'} onCanPlay={(event) => { const video = event.currentTarget; video.muted = true; if (video.paused && playing) video.play().catch(() => setPlaying(false)); }} />}
     {mobile ? <div className="container hero-content hero-content-m">
       <div className="hero-m-top">
         <Eyebrow>TECHNOLOGY · CONSULTING · INNOVATION</Eyebrow>

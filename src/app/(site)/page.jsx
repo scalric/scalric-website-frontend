@@ -1,6 +1,6 @@
 import HomePage from '@/views/HomePage.jsx';
 
-export const metadata = { title: "Scalric — Engineering the Difference", description: "Scalric studies complex problems and builds technology and consulting solutions for measurable business and social impact." };
+export const metadata = { title: "Scalric — Technology & Consulting for Measurable Impact", description: "Scalric studies complex problems and builds technology, data, AI and consulting solutions that deliver measurable business and social impact.", alternates: { canonical: "/" } };
 
 export default function Page() {
   return <HomePage />;

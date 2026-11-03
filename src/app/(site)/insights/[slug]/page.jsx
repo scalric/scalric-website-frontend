@@ -8,7 +8,8 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const article = insights.find((item) => item.slug === slug);
-  return { title: article ? `${article.title} — Scalric` : 'Insight — Scalric' };
+  if (!article) return { title: 'Insight — Scalric' };
+  return { title: `${article.title} — Scalric`, alternates: { canonical: `/insights/${slug}` }, openGraph: { type: 'article', title: article.title, url: `/insights/${slug}` } };
 }
 
 export default async function Page({ params }) {
