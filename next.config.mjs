@@ -13,7 +13,7 @@ export default {
   async headers() {
     return [
       { source: '/media/:path*', headers: cache('public, max-age=2592000, stale-while-revalidate=604800') },
-      { source: '/assets/:path*', headers: cache('public, max-age=604800, stale-while-revalidate=604800') },
+      { source: '/assets/:path*', headers: cache('public, max-age=2592000, stale-while-revalidate=604800') },
     ];
   },
 };
