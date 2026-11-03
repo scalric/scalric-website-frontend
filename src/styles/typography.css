@@ -293,3 +293,54 @@ body .think-section .think-eyebrow{color:#ffba49!important;-webkit-text-fill-col
 
 /* "HOW WE WORK" labels: yellow */
 body .work-steps .ws-eyebrow,body .process-section .eyebrow{color:#ffba49!important;-webkit-text-fill-color:#ffba49!important}
+
+/* Phones, "How we work": the written parts pop in quickly one after another, in step with the yellow line */
+.ws-intro-m>*{opacity:0;transform:translateY(10px);transition:opacity .35s var(--ease-out),transform .35s var(--ease-out);transition-delay:calc(var(--k) * .08s)}
+.is-in .ws-intro-m>*{opacity:1;transform:none}
+.ws-m-step.ws-m-step-fast{transition:opacity .3s var(--ease-out),transform .3s var(--ease-out);transition-delay:calc(.2s + var(--i) * .25s)}
+
+/* Thinking ahead cards stay still on hover (and when tapped on a phone) - no lifting up or down */
+body .think-section .think-card,body .think-section .think-card:hover,body .think-section .think-card:focus-visible,body .think-section .think-card:active{transform:none!important}
+body .think-section .think-card:hover{box-shadow:none}
+
+/* Phones, contact band: big photo under the card, cropped to the two people in the middle, edge to edge */
+@media (max-width:760px){
+  body .cx-section .cx-photo.cx-photo-m{aspect-ratio:4/3!important;width:calc(100% + 40px);margin-inline:-20px!important;overflow:hidden}
+  body .cx-section .cx-photo.cx-photo-m img{height:100%!important;object-fit:cover!important;object-position:47% 50%}
+}
+
+/* Thinking ahead row: moves sideways only - never up or down while dragging or swiping */
+body .think-cards{overflow-y:hidden;overscroll-behavior:contain;touch-action:pan-x pan-y}
+body .think-cards .think-card,body .think-cards .think-card img{-webkit-user-drag:none;user-select:none}
+body .think-cards>*{transform:none!important}
+@media (max-width:760px){
+  body .cx-section .cx-photo.cx-photo-m{aspect-ratio:5/6!important}
+  body .cx-section .cx-photo.cx-photo-m img{object-position:73% 50%}
+}
+
+/* ---- Phones: every button gets one clean, finger-friendly shape (size and spacing only - colors stay as they are) ---- */
+@media (max-width:760px){
+  body :is(.button,.btn-talk,.cx-btn,.ct-send,.form-submit,.why-link,.think-all,.ws-cta,.ah-actions>a){box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 24px!important;border-radius:999px;font-size:15px;font-weight:600;line-height:1.2;text-align:center;white-space:normal}
+  /* Button pairs (hero and card actions) stack, full width, equal size */
+  body :is(.ah-m-copy .ah-actions,.ah-actions,.hero-actions){display:grid!important;grid-template-columns:1fr;gap:12px;width:100%;margin-top:22px}
+  body :is(.ah-m-copy .ah-actions,.ah-actions,.hero-actions)>a,body :is(.ah-m-copy .ah-actions,.ah-actions,.hero-actions)>button{width:100%!important;height:54px!important;min-height:54px!important;flex:none}
+  /* Single call-to-action buttons inside cards and bands fill the width too */
+  body :is(.cx-card .cx-btn,.ct-send,.form-submit,.ws-intro .ws-cta,.ah-m .btn-talk){width:100%;max-width:none;height:54px}
+}
+
+/* Contact page banner: the support photo replaces the old circle background; text sits on the clear left side */
+body .page-intro-contact{background:#f4f7fc url('/assets/photos/contact-hero.webp') right center/cover no-repeat!important;min-height:clamp(420px,40vw,620px)}
+body .page-intro-contact:before,body .page-intro-contact:after{display:none!important}
+@media (max-width:760px){
+  body .page-intro-contact{display:block;min-height:0;padding:0!important;background:#f4f7fc!important}
+  body .page-intro-contact:before{display:block!important;content:'';position:static;width:100%;aspect-ratio:3/2;background:url('/assets/photos/contact-hero.webp') 78% center/cover no-repeat}
+  body .page-intro-contact .page-intro-inner{padding:28px 0 36px}
+}
+@media (min-width:761px){
+  body .page-intro-contact h1{font-size:clamp(36px,4.4vw,72px)!important}
+  body .page-intro-contact p{max-width:420px}
+}
+
+/* Contact banner label: yellow button-style pill */
+body .page-intro-contact .eyebrow{display:inline-flex;align-items:center;justify-content:center;padding:12px 26px;border-radius:999px;background:#ffba49;color:#0b1220!important;-webkit-text-fill-color:#0b1220!important;font-size:13px;font-weight:700;letter-spacing:.1em;line-height:1;box-shadow:0 14px 34px -16px #ffba49cc}
+body .page-intro-contact .eyebrow i{display:none}

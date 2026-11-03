@@ -22,18 +22,18 @@ export default function WorkSteps() {
   if (mobile) return <section className="section work-steps" id="how-we-work"><div className="container">
     <div className={`ws-stage ws-stage-m${inView ? ' is-in' : ''}`} ref={ref}>
       <span className="ws-circle" aria-hidden="true" />
-      <div className="ws-intro">
-        <span className="ws-eyebrow">HOW WE WORK</span>
-        <h2>From question<br />to measurable outcome</h2>
-        <p>Three clear steps, one shared goal: understand the problem, agree what matters, and build a product that delivers.</p>
-        <Link href="/contact" className="button button-green ws-cta">Get started</Link>
+      <div className="ws-intro ws-intro-m">
+        <span className="ws-eyebrow" style={{ '--k': 0 }}>HOW WE WORK</span>
+        <h2 style={{ '--k': 1 }}>From question<br />to measurable outcome</h2>
+        <p style={{ '--k': 2 }}>Three clear steps, one shared goal: understand the problem, agree what matters, and build a product that delivers.</p>
+        <Link href="/contact" className="button button-green ws-cta" style={{ '--k': 3 }}>Get started</Link>
       </div>
       <div className="ws-m-track">
         <svg className="ws-m-line" viewBox="0 0 44 1000" preserveAspectRatio="none" aria-hidden="true">
           <path className="ws-line-glow" pathLength="1" d="M22 -40 C22 -10 22 -10 22 0 C46 110 -2 230 22 333 C46 436 -2 560 22 667 C46 774 -2 890 22 1000" />
           <path className="ws-line-path" pathLength="1" d="M22 -40 C22 -10 22 -10 22 0 C46 110 -2 230 22 333 C46 436 -2 560 22 667 C46 774 -2 890 22 1000" />
         </svg>
-        <ol className="ws-m-steps">{steps.map((step, i) => <li key={step.title} className="ws-m-step" style={{ '--i': i }}>
+        <ol className="ws-m-steps">{steps.map((step, i) => <li key={step.title} className="ws-m-step ws-m-step-fast" style={{ '--i': i }}>
           <span className="ws-m-dot" aria-hidden="true" />
           <h3>{step.title}</h3><p>{step.text}</p>
         </li>)}</ol>

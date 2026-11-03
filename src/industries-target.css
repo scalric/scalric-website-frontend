@@ -53,7 +53,7 @@ a.it-photo{cursor:pointer}
 
 /* Hover or focus on any industry (row or photo): its photo(s) pop - bigger, brighter, with a soft glow. The rest dim a little. */
 .it-grid .it-photo{transition:transform .5s cubic-bezier(.22,.7,.2,1),box-shadow .5s,z-index 0s}
-.it-grid .it-photo img{filter:brightness(.7) saturate(.9);transition:filter .5s,transform .8s}
-.it-grid .it-photo.is-active{z-index:3;transform:scale(1.06);box-shadow:0 0 0 2px #ffffffcc,0 18px 50px -8px #ffba49aa,0 0 46px 6px #6fa0ff99}
-.it-grid .it-photo.is-active img{filter:brightness(1.12) saturate(1.2) contrast(1.04);transform:scale(1.1)}
+.it-grid .it-photo img{filter:none;transition:filter .5s,transform .8s}
+.it-grid .it-photo.is-active{z-index:3;transform:scale(1.06);box-shadow:none}
+.it-grid .it-photo.is-active img{filter:brightness(1.08) saturate(1.15);transform:scale(1.1)}
 @media (prefers-reduced-motion:reduce){.it-grid .it-photo,.it-grid .it-photo img{transition:none}}
