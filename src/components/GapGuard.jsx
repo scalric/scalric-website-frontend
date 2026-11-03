@@ -30,7 +30,11 @@ function widestGap(el) {
 }
 
 function check() {
+  const vh = window.innerHeight;
   document.querySelectorAll(SELECTOR).forEach((el) => {
+    // Only measure blocks near the viewport; the rest are checked when scrolled into range.
+    const r = el.getBoundingClientRect();
+    if (r.bottom < -vh || r.top > vh * 2) return;
     if (!el.textContent || el.textContent.trim().length < 25) return;
     el.classList.remove('no-justify');
     const cs = getComputedStyle(el);
@@ -46,10 +50,11 @@ export default function GapGuard() {
     const schedule = () => { clearTimeout(timer); timer = window.setTimeout(() => (window.requestIdleCallback || window.setTimeout)(check), 800); };
     schedule();
     window.addEventListener('resize', schedule);
+    window.addEventListener('scroll', schedule, { passive: true });
     const observer = new MutationObserver(schedule);
     observer.observe(document.body, { childList: true, subtree: true });
     document.fonts?.ready.then(schedule);
-    return () => { clearTimeout(timer); window.removeEventListener('resize', schedule); observer.disconnect(); };
+    return () => { clearTimeout(timer); window.removeEventListener('resize', schedule); window.removeEventListener('scroll', schedule); observer.disconnect(); };
   }, []);
   return null;
 }

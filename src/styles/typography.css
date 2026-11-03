@@ -19,7 +19,7 @@ body :where(.button,.topic-pill,.eyebrow,.hero-actions,.mega-link,nav) :where(p,
 .ah h1{text-align:left!important;text-align-last:left!important;word-spacing:normal!important;hyphens:manual!important}
 .ah-team h1{font-size:clamp(30px,3.7vw,54px)!important;line-height:1.1!important;margin:16px 0 18px!important}
 .ah-team .ah-copy p{font-size:clamp(14px,1.15vw,17px)!important;line-height:1.6!important;hyphens:auto;-webkit-hyphens:auto;word-spacing:normal}
-@media (min-width:861px){.ah-team .ah-copy p,.ah-team .ah-copy p.no-justify{text-align:justify!important;text-align-last:left!important}}
+.ah-team .ah-copy p{text-align:left!important}
 .ah-team{min-height:clamp(480px,42vw,600px)!important}
 
 /* paragraphs that would show stretched word gaps at the current width (set by GapGuard.jsx) fall back to left-aligned */
