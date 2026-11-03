@@ -9,7 +9,9 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const article = insights.find((item) => item.slug === slug);
   if (!article) return { title: 'Insight — Scalric' };
-  return { title: `${article.title} — Scalric`, alternates: { canonical: `/insights/${slug}` }, openGraph: { type: 'article', title: article.title, url: `/insights/${slug}` } };
+  const description = article.dek;
+  const images = article.heroImage ? [{ url: article.heroImage }] : undefined;
+  return { title: `${article.title} — Scalric`, description, alternates: { canonical: `/insights/${slug}` }, openGraph: { type: 'article', title: article.title, description, url: `/insights/${slug}`, images }, twitter: { card: 'summary_large_image', title: article.title, description, images: article.heroImage ? [article.heroImage] : undefined } };
 }
 
 export default async function Page({ params }) {
