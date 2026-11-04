@@ -28,19 +28,32 @@ function Hero() {
     if (!video) return;
     if (video.paused) { video.play().catch(() => { }); setPlaying(true); } else { video.pause(); setPlaying(false); }
   };
-  const renderHero = (m) => <section className={`home-hero hero-city${m ? ' hero-m' : ''}`} id="top" aria-labelledby="hero-title">
-    {enabled && <video ref={videoRef} className="hero-city-video" src={ready ? (m ? '/media/hero-mobile-v2.mp4' : '/media/hero-home.mp4') : undefined} autoPlay muted loop playsInline preload="metadata" aria-hidden="true" tabIndex={-1} key={m ? 'm' : 'd'} poster={m ? '/assets/hero-mobile-v2-poster.webp' : '/assets/hero-home-poster.webp'} onCanPlay={(event) => { const video = event.currentTarget; video.muted = true; if (video.paused && playing) video.play().catch(() => setPlaying(false)); }} />}
-    {m ? <div className="container hero-content hero-content-m">
-      <div className="hero-m-top">
-        <Eyebrow>GLOBAL RESEARCH · CONSULTANCY · AI SOLUTIONS</Eyebrow>
-        <SplitHeading as="h1" lines={['Engineering', 'the difference']} accent={1} className="hero-title" startDelay={2} />
+  const impactClick = () => window.dispatchEvent(new CustomEvent('scalric:analytics', { detail: { event: 'impact_teaser_click' } }));
+  const btnArrow = <svg className="mh-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>;
+  // Phones get their own hero (separate markup + mh-* classes) so it matches the mobile design without fighting the desktop banner styles.
+  const renderMobileHero = () => <section className="mh-hero" id="top" aria-labelledby="hero-title">
+    {enabled && <video ref={videoRef} className="mh-video" src={ready ? '/media/hero-mobile-v2.mp4' : undefined} autoPlay muted loop playsInline preload="metadata" aria-hidden="true" tabIndex={-1} key="m" poster="/assets/hero-mobile-v2-poster.webp" onCanPlay={(event) => { const video = event.currentTarget; video.muted = true; if (video.paused && playing) video.play().catch(() => setPlaying(false)); }} />}
+    <div className="mh-shade" aria-hidden="true" />
+    <div className="mh-content">
+      <p className="mh-eyebrow">Global research <span>•</span> Consultancy <span>•</span> AI solutions</p>
+      <h1 id="hero-title" className="mh-title">Engineering<br />the Difference</h1>
+      <p className="mh-lede" data-no-titlecase>Turning ideas into intelligent solutions for a smarter tomorrow.</p>
+      <div className="mh-actions">
+        <Link href="/what-we-do" className="mh-btn mh-btn-solid">What We Do {btnArrow}</Link>
+        <Link href="/industries#impact" className="mh-btn mh-btn-outline" onClick={impactClick}>See Our Impact {btnArrow}</Link>
       </div>
-      <div className="hero-actions hero-m-bottom"><Link href="/what-we-do" className="button button-green">What we do</Link><Link href="/industries#impact" className="button button-outline" onClick={() => window.dispatchEvent(new CustomEvent('scalric:analytics', { detail: { event: 'impact_teaser_click' } }))}>See our impact</Link></div>
-    </div> : <div className="container hero-content">
+    </div>
+    <button type="button" className="mh-scroll" aria-label="Scroll to content" onClick={() => document.querySelector('main')?.scrollIntoView({ behavior: 'smooth' })}>
+      <i /><svg viewBox="0 0 24 36" aria-hidden="true"><rect x="2" y="2" width="20" height="32" rx="10" fill="none" stroke="currentColor" strokeWidth="1.8" /><line className="mh-wheel" x1="12" y1="9" x2="12" y2="14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg><i />
+    </button>
+  </section>;
+  const renderHero = (m) => m ? renderMobileHero() : <section className="home-hero hero-city" id="top" aria-labelledby="hero-title">
+    {enabled && <video ref={videoRef} className="hero-city-video" src={ready ? '/media/hero-home.mp4' : undefined} autoPlay muted loop playsInline preload="metadata" aria-hidden="true" tabIndex={-1} key="d" poster="/assets/hero-home-poster.webp" onCanPlay={(event) => { const video = event.currentTarget; video.muted = true; if (video.paused && playing) video.play().catch(() => setPlaying(false)); }} />}
+    <div className="container hero-content">
       <Eyebrow>GLOBAL RESEARCH · CONSULTANCY · AI SOLUTIONS</Eyebrow>
       <SplitHeading as="h1" lines={['Engineering', 'the difference']} accent={1} className="hero-title" startDelay={2} />
       <div className="hero-actions"><Link href="/what-we-do" className="button button-green">What we do</Link><Link href="/industries#impact" className="button button-outline" onClick={() => window.dispatchEvent(new CustomEvent('scalric:analytics', { detail: { event: 'impact_teaser_click' } }))}>See our impact</Link></div>
-    </div>}
+    </div>
   </section>;
   return <><link rel="preload" as="image" href="/assets/hero-home-poster.webp" media="(min-width: 681px)" fetchPriority="high" /><link rel="preload" as="image" href="/assets/hero-mobile-v2-poster.webp" media="(max-width: 680px)" fetchPriority="high" />{mobile === null ? <><div className="ssr-m-680">{renderHero(true)}</div><div className="ssr-d-680">{renderHero(false)}</div></> : renderHero(mobile)}</>;
 }

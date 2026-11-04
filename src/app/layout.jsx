@@ -14,6 +14,7 @@ import '@/costly-mistakes.css';
 import '@/success-stories.css';
 import '@/styles/typography.css';
 import '@/styles/impact-detail.css';
+import '@/styles/mobile-hero.css';
 
 const description = 'Scalric studies complex problems and builds technology and consulting solutions for measurable business and social impact.';
 
