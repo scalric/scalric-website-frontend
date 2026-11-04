@@ -52,6 +52,7 @@ function Hero() {
     <div className="container hero-content">
       <Eyebrow>GLOBAL RESEARCH · CONSULTANCY · AI SOLUTIONS</Eyebrow>
       <SplitHeading as="h1" lines={['Engineering', 'the difference']} accent={1} className="hero-title" startDelay={2} />
+      <p className="hero-lede" data-no-titlecase>Turning ideas into intelligent solutions for a smarter tomorrow.</p>
       <div className="hero-actions"><Link href="/what-we-do" className="button button-green">What we do</Link><Link href="/industries#impact" className="button button-outline" onClick={() => window.dispatchEvent(new CustomEvent('scalric:analytics', { detail: { event: 'impact_teaser_click' } }))}>See our impact</Link></div>
     </div>
   </section>;
