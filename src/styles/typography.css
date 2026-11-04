@@ -448,3 +448,12 @@ body .think-cards.think-one>*{flex:0 0 100%!important;scroll-snap-align:start}
 body .opn-row .opn-apply.opn-apply-m{display:flex;justify-content:flex-end;grid-column:1/-1}
 body .opn-apply.opn-apply-m .button.opn-apply-yellow{width:auto!important;min-width:0;padding:0 26px!important;background:#ffba49!important;border-color:#ffba49!important;color:#0b1220!important;-webkit-text-fill-color:#0b1220!important}
 body .opn-apply.opn-apply-m .button.opn-apply-yellow:hover,body .opn-apply.opn-apply-m .button.opn-apply-yellow:active{background:#f5a623!important;border-color:#f5a623!important}
+
+/* Company page: "Build with us" CTA as a clean rectangle */
+body main .company-manifesto .mf-block .btn-talk{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;gap:12px!important;height:56px;min-height:56px;min-width:220px;padding:0 34px!important;border-radius:8px!important;font-size:16px!important;font-weight:600;letter-spacing:.01em;line-height:1;box-shadow:0 12px 28px -14px #ffba49cc}
+body main .company-manifesto .mf-block .btn-talk::after{content:'→';font-size:18px;line-height:1;transition:transform .3s var(--ease-out)}
+body main .company-manifesto .mf-block .btn-talk:hover::after{transform:translateX(4px)}
+@media (max-width:560px){body main .company-manifesto .mf-block .btn-talk{width:100%;max-width:320px}}
+
+/* Contact page (phones): cropped photo keeps her face and the monitor in frame above the headline */
+body .m-over-media>img.ct-m-img{aspect-ratio:880/735;height:auto;min-height:0;object-fit:cover;object-position:50% 20%}

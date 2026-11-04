@@ -11,7 +11,7 @@ export default function ContactPage({ search }) {
   const mobile = useMobile();
   const intro = 'Share the challenge or opportunity on your mind. We’ll use your note to understand where the conversation should begin.';
   return <><Responsive mobile={mobile}
-    m={<section className="ah-m"><div className="m-over-media"><img className="ah-m-img" src="/assets/photos/contact-hero.webp" alt="" fetchPriority="high" decoding="async" /><div className="m-over-text"><span className="ah-eyebrow"><i />CONTACT SCALRIC</span><h1>{title}</h1></div></div><div className="ah-m-copy"><p>{intro}</p></div></section>}
+    m={<section className="ah-m"><div className="m-over-media"><img className="ah-m-img ct-m-img" src="/assets/photos/contact-hero-m.webp" width="880" height="735" alt="" fetchPriority="high" decoding="async" /><div className="m-over-text"><span className="ah-eyebrow"><i />CONTACT SCALRIC</span><h1>{title}</h1></div></div><div className="ah-m-copy"><p>{intro}</p></div></section>}
     d={<PageIntro className="page-intro-contact" eyebrow="CONTACT SCALRIC" title={<>{title.split(' ').slice(0, -2).join(' ')}<br /><span className="text-muted">{title.split(' ').slice(-2).join(' ')}</span></>} text={intro} />} />
     <main><section className="section ct-section"><div className="container ct-grid">
       <Reveal className="ct-side">

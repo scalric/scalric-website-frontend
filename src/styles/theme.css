@@ -2141,7 +2141,7 @@ body main .article-content p.article-lead{color:#0b1220!important;font-weight:50
 
 /* "Start a conversation": photo with an overlapping blue card */
 .cx-section{background:#fff;padding:96px 0 70px}
-.cx-stage{position:relative;width:min(1781px,calc(100% - 90px));margin-inline:auto;display:grid;grid-template-columns:repeat(24,1fr);align-items:start;padding-bottom:70px;border-bottom:1px solid #e3e6ec}
+.cx-stage{position:relative;width:min(1781px,calc(100% - 90px));margin-inline:auto;display:grid;grid-template-columns:repeat(24,1fr);align-items:start;padding-bottom:70px}
 .cx-photo{grid-column:1/19;grid-row:1;margin-top:77px;aspect-ratio:1354/452}
 .cx-photo img{width:100%;height:100%;object-fit:cover}
 .cx-card{grid-column:17/25;grid-row:1;z-index:2;display:flex;flex-direction:column;align-items:flex-start;padding:50px;background:#0447e3;color:#fff}
