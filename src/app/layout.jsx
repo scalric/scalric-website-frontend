@@ -13,6 +13,7 @@ import '@/industries-target.css';
 import '@/costly-mistakes.css';
 import '@/success-stories.css';
 import '@/styles/typography.css';
+import '@/styles/impact-detail.css';
 
 const description = 'Scalric studies complex problems and builds technology and consulting solutions for measurable business and social impact.';
 

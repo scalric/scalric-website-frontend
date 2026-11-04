@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Link, Reveal } from '../components/UI.jsx';
-import { useMobile } from '../lib/useMobile.js';
+import { useMobile, Responsive } from '../lib/useMobile.js';
 
 const heroSlides = ['/assets/photos/life-3.webp', '/assets/photos/life-1.webp', '/assets/photos/life-2.webp'];
 
@@ -37,7 +37,7 @@ const expect = [
 export default function LifePage() {
   const mobile = useMobile();
   return <main className="life">
-    {mobile ? <section className="life-hero-m">
+    <Responsive mobile={mobile} m={<section className="life-hero-m">
       <div className="m-over-media">
         <img src={heroSlides[0]} alt="" fetchPriority="high" decoding="async" />
         <div className="m-over-text"><span className="ah-eyebrow"><i />CAREERS</span><h1>Life at Scalric</h1></div>
@@ -45,7 +45,7 @@ export default function LifePage() {
       <div className="life-hero-m-box">
         <p>Good work comes from people who trust each other. Here is what that looks like day to day.</p>
       </div>
-    </section> : <section className="life-hero">
+    </section>} d={<section className="life-hero">
       <div className="life-hero-bg" aria-hidden="true">{heroSlides.map((src, i) => <img key={src} className="life-slide" style={{ '--n': i }} src={src} alt="" decoding="async" fetchPriority={i === 0 ? 'high' : undefined} />)}</div>
       <div className="life-hero-inner">
         <div className="life-hero-box">
@@ -53,7 +53,7 @@ export default function LifePage() {
           <p>Good work comes from people who trust each other. Here is what that looks like day to day.</p>
         </div>
       </div>
-    </section>}
+    </section>} />
     <section className="life-intro">
       <Reveal>
         <h2>What it is like to work here</h2>

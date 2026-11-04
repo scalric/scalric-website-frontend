@@ -54,11 +54,10 @@ export default function OpeningsPage({ search = '' }) {
   const track = (slug) => window.dispatchEvent(new CustomEvent('scalric:analytics', { detail: { event: 'careers_view_role_click', slug } }));
 
   return <main className="opn">
-    {mobile && <div className="m-over-media"><img className="m-banner-photo" src="/assets/photos/careers-banner.webp" alt="" fetchPriority="high" decoding="async" /><div className="m-over-text"><span className="ah-eyebrow"><i />OPEN OPPORTUNITIES</span><h1>Find your role</h1></div></div>}
-    <section className={`opn-hero${mobile ? ' opn-hero-m' : ''}`}><div className="container">
+    {mobile !== false && <div className={`m-over-media${mobile === null ? ' ssr-only-m' : ''}`}><img className="m-banner-photo" src="/assets/photos/careers-banner.webp" alt="" fetchPriority="high" decoding="async" /><div className="m-over-text"><span className="ah-eyebrow"><i />OPEN OPPORTUNITIES</span><h1>Find your role</h1></div></div>}
+    <section className={`opn-hero${mobile ? ' opn-hero-m' : mobile === null ? ' opn-hero-auto' : ''}`}><div className="container">
       <div className="breadcrumbs"><Link href="/">Home</Link><span>/</span><Link href="/careers/openings">Careers</Link><span>/</span><span>Open roles</span></div>
-      {!mobile && <Eyebrow>OPEN OPPORTUNITIES</Eyebrow>}
-      {!mobile && <h1>Find your role</h1>}
+      {mobile !== true && <div className="ssr-d-760"><Eyebrow>OPEN OPPORTUNITIES</Eyebrow><h1>Find your role</h1></div>}
       <p>Search every current opening at Scalric. Filter by location, team or how you like to work, then apply in a few minutes.</p>
       <form className="opn-filters" role="search" onSubmit={(event) => event.preventDefault()}>
         <label className="opn-search"><span>Job title or keyword</span><input type="search" value={state.q} onChange={(event) => update({ q: event.target.value })} placeholder="Search roles" /></label>
@@ -86,7 +85,7 @@ export default function OpeningsPage({ search = '' }) {
             <span data-label="Location" role="cell">{role.location || '—'}</span>
             <span data-label="Team" role="cell">{role.team || '—'}</span>
             <span data-label="Work mode" role="cell">{role.workMode || '—'}</span>
-            <span className="opn-apply" role="cell"><Link href={`/careers/${role.slug}#apply`} className="button button-green" onClick={() => track(role.slug)}>Apply</Link></span>
+            <span className={`opn-apply${mobile ? ' opn-apply-m' : ''}`} role="cell"><Link href={`/careers/${role.slug}#apply`} className={`button ${mobile ? 'opn-apply-yellow' : 'button-green'}`} onClick={() => track(role.slug)}>Apply</Link></span>
           </div>)}
         </div> : <div className="opn-empty"><h2>No roles match your search</h2><p>Try removing a filter or searching for something broader.</p><button type="button" className="button button-green" onClick={clear}>Clear all filters</button></div>}
         {pages > 1 && <nav className="opn-pager" aria-label="Pagination">

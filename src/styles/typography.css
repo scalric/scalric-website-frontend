@@ -309,7 +309,7 @@ body .think-section .think-card:hover{box-shadow:none}
 
 /* Phones, contact band: big photo under the card, cropped to the two people in the middle, edge to edge */
 @media (max-width:760px){
-  body .cx-section .cx-photo.cx-photo-m{aspect-ratio:4/3!important;width:calc(100% + 40px);margin-inline:-20px!important;overflow:hidden}
+  body .cx-section .cx-photo.cx-photo-m{aspect-ratio:4/3!important;width:100%;margin-inline:0!important;overflow:hidden}
   body .cx-section .cx-photo.cx-photo-m img{height:100%!important;object-fit:cover!important;object-position:47% 50%}
 }
 
@@ -395,3 +395,56 @@ body .m-over-text h1{margin:10px 0 0;font-size:clamp(30px,8.6vw,40px);font-weigh
   body main .ind-banner .ind-slide p{font-size:clamp(14px,3.8vw,16px)!important}
   body .ind-banner .ind-slides-nav{position:absolute!important;right:20px;bottom:20px;margin:0}
 }
+
+/* Phones, contact band: the photo is exactly as wide as the blue card above it, with the same left and right edges */
+@media (max-width:760px){
+  body .cx-section .cx-stage{align-items:stretch}
+  body .cx-section .cx-card,body .cx-section .cx-photo.cx-photo-m{width:100%;max-width:100%;margin-inline:0!important;box-sizing:border-box}
+}
+
+/* Phones: the small label on every banner (COMPANY, WHAT WE DO, INSIGHTS, CAREERS, CONTACT SCALRIC, OPEN OPPORTUNITIES, INDUSTRIES) is yellow */
+@media (max-width:760px){
+  body .m-over-text .ah-eyebrow,body .ah-m-copy .ah-eyebrow,body .life-hero-m-box .ah-eyebrow{color:#ffba49!important}
+}
+
+/* Phones, home hero: the label stays on one line and shrinks with the screen width so it always fits */
+@media (max-width:680px){
+  body .hero-m .hero-m-top .eyebrow{display:flex;flex-wrap:nowrap;white-space:nowrap;font-size:clamp(8.4px,2.7vw,12.1px)!important;letter-spacing:.08em!important;gap:8px}
+}
+
+/* Contact page left block: larger headline and lead, plus a short "what happens next" list */
+.ct-side .eyebrow{font-size:clamp(14px,1.1vw,17px)}
+body .ct-side h2{font-size:clamp(44px,6vw,84px);line-height:1.02;letter-spacing:-.03em}
+body main .ct-side p.ct-lead{max-width:26em;margin:0 0 34px;font-size:clamp(19px,1.7vw,24px);line-height:1.55}
+.ct-next{list-style:none;counter-reset:ct;margin:0;padding:0;display:grid;gap:22px;max-width:30em}
+.ct-next li{counter-increment:ct;position:relative;display:grid;gap:4px;padding-left:56px}
+.ct-next li::before{content:counter(ct);position:absolute;left:0;top:0;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:#1155d9;color:#fff;font-size:16px;font-weight:600}
+.ct-next b{font-size:clamp(18px,1.5vw,21px);font-weight:600;color:#0b1220}
+body main .ct-next span{font-size:16px;line-height:1.55}
+@media (max-width:760px){body .ct-side h2{font-size:clamp(42px,12vw,56px)}}
+
+/* Company banner: larger paragraph, and no short dash before the COMPANY label */
+body .ah-team .ah-copy p{font-size:clamp(18px,1.6vw,25px)!important;line-height:1.5!important}
+body .ah-m-team .ah-m-copy p{font-size:20px!important;line-height:1.55!important}
+.ah-team .ah-eyebrow i,.ah-m-team .ah-eyebrow i,.ah-team .ah-eyebrow::before,.ah-m-team .ah-eyebrow::before{display:none!important}
+
+/* What We Do banner label is yellow on every screen size */
+body .ah-whatwedo .ah-eyebrow,body .ah-m-whatwedo .ah-eyebrow{color:#ffba49!important}
+
+/* Phones, Thinking ahead: exactly one card fills the row and snaps into place, so no part of the next card shows */
+body .think-cards.think-one{scroll-snap-type:x mandatory}
+body .think-cards.think-one>*{flex:0 0 100%!important;scroll-snap-align:start}
+
+/* First paint before the screen width is known: both layouts are in the HTML and only the matching one shows (see <Responsive>) */
+.ssr-m-760,.ssr-d-760,.ssr-m-680,.ssr-d-680{display:contents}
+@media (max-width:760px){.ssr-d-760{display:none!important}}
+@media (min-width:761px){.ssr-m-760{display:none!important}}
+@media (max-width:680px){.ssr-d-680{display:none!important}}
+@media (min-width:681px){.ssr-m-680{display:none!important}}
+@media (min-width:761px){.ssr-only-m{display:none!important}}
+@media (max-width:760px){.opn-hero.opn-hero-auto{background:#1155d9!important}.opn-hero-auto::before{display:none!important}}
+
+/* Phones, Open roles: the Apply button is yellow and sits on the right of each role card */
+body .opn-row .opn-apply.opn-apply-m{display:flex;justify-content:flex-end;grid-column:1/-1}
+body .opn-apply.opn-apply-m .button.opn-apply-yellow{width:auto!important;min-width:0;padding:0 26px!important;background:#ffba49!important;border-color:#ffba49!important;color:#0b1220!important;-webkit-text-fill-color:#0b1220!important}
+body .opn-apply.opn-apply-m .button.opn-apply-yellow:hover,body .opn-apply.opn-apply-m .button.opn-apply-yellow:active{background:#f5a623!important;border-color:#f5a623!important}

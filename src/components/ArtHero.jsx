@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from './UI.jsx';
 import { topics } from '../data/siteContent.js';
-import { useMobile } from '../lib/useMobile.js';
+import { useMobile, Responsive } from '../lib/useMobile.js';
 
 /** Per-page art: which abstract image to use, how it is framed, the default eyebrow and the glass chips that float beside the copy. */
 const ART = {
@@ -31,8 +31,7 @@ export default function ArtHero({ art = 'wave', eyebrow, title, text, children, 
   const list = chips || config.chips || [];
   const mobile = useMobile();
   // Phones: the people-photo banners show the whole photo at its natural size (every face in view) with the text box underneath, never on top of it.
-  if (mobile && PHOTO_ARTS.includes(art)) {
-    return <section className={`ah-m ah-m-${art}`}>
+  const phone = PHOTO_ARTS.includes(art) && <section className={`ah-m ah-m-${art}`}>
       <div className="m-over-media">
         <img className="ah-m-img" src={config.slides ? config.slides[0] : config.src} alt="" fetchPriority="high" decoding="async" />
         <div className="m-over-text">
@@ -45,8 +44,7 @@ export default function ArtHero({ art = 'wave', eyebrow, title, text, children, 
         {children && <div className="ah-actions">{children}</div>}
       </div>
     </section>;
-  }
-  return <section className={`ah ah-${art}${config.tone === 'light' ? ' ah-light' : ''}`}>
+  const desktop = <section className={`ah ah-${art}${config.tone === 'light' ? ' ah-light' : ''}`}>
     <div className="ah-bg" aria-hidden="true">{config.slides
       ? config.slides.map((src, i) => <img key={src} className="ah-slide" style={{ '--n': i }} src={src} alt="" fetchPriority={i === 0 ? 'high' : undefined} decoding="async" />)
       : <img src={config.src} alt="" fetchPriority="high" decoding="async" />}</div>
@@ -63,4 +61,5 @@ export default function ArtHero({ art = 'wave', eyebrow, title, text, children, 
       </li>)}</ul>}
     </div>
   </section>;
+  return phone ? <Responsive mobile={mobile} m={phone} d={desktop} /> : desktop;
 }

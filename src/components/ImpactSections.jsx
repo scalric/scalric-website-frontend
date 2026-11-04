@@ -3,6 +3,9 @@ import NicheSpotlight from './NicheSpotlight.jsx';
 import CtaBand from './CtaBand.jsx';
 import { sampleFeedback } from './FeedbackCarousel.jsx';
 import { Eyebrow, Reveal } from './UI.jsx';
+import ImpactDetail from './ImpactDetail.jsx';
+import { useMobile } from '../lib/useMobile.js';
+import { impactIndustries, impactKey } from '../data/impactIndustries.js';
 
 const statement = [
   ['We build with local businesses and NGOs, ', false],
@@ -69,23 +72,17 @@ const audiences = [
   { title: 'Salons & beauty', text: 'Online booking, stylist calendars and loyalty rewards that fill the diary', image: '/assets/photos/impact-salons.webp', video: '/assets/videos/impact-salons.mp4', tag: 'Beauty' },
 ];
 
-/** Loads and plays a card video only while it is near the viewport, so 19 clips don't all download and decode at once. */
-function CardVideo({ src, poster }) {
-  const ref = React.useRef(null);
-  const [near, setNear] = React.useState(false);
-  React.useEffect(() => {
-    const video = ref.current;
-    if (!video || !('IntersectionObserver' in window)) { setNear(true); return undefined; }
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) { setNear(true); video.play?.().catch(() => {}); } else video.pause?.();
-    }, { rootMargin: '0px 320px' });
-    observer.observe(video);
-    return () => observer.disconnect();
-  }, []);
-  return <video ref={ref} src={near ? src : undefined} poster={poster} autoPlay muted loop playsInline preload="none" aria-hidden="true" />;
-}
+// Each card shows a still thumbnail (thumb-<video basename>.webp); the video plays in the detail view only.
+const cards = audiences.map((item) => {
+  const key = impactKey(item.video);
+  return { ...item, key, thumb: item.video ? `/assets/photos/thumb-${key}.webp` : item.image, focus: impactIndustries[key]?.focus };
+});
+
+const PlayIcon = () => <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.2-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z" fill="currentColor" /></svg>;
 
 function Showcase() {
+  const mobile = useMobile();
+  const [open, setOpen] = React.useState(-1);
   const scroller = React.useRef(null);
   const [ratio, setRatio] = React.useState(0.33);
   const [edge, setEdge] = React.useState({ start: true, end: false });
@@ -103,15 +100,21 @@ function Showcase() {
 
   return <section className="imp-showcase" aria-label="Who the initiative supports">
     <div className="imp-showcase-track" ref={scroller} onScroll={measure} tabIndex="0">
-      {audiences.map((item) => <article key={item.title} className="imp-card">
-        {item.video
-          ? <CardVideo src={item.video} poster={item.image} />
-          : <img src={item.image} alt="" loading="lazy" decoding="async" />}
-        <div className="imp-card-shade" />
-        <span className="imp-card-tag">{item.tag}</span>
-        <div className="imp-card-body"><h3>{item.title}</h3><p>{item.text}</p></div>
-      </article>)}
+      {cards.map((item, index) => {
+        const detail = Boolean(impactIndustries[item.key]);
+        // Conditional rendering: phones get a compact caption so the thumbnail stays visible
+        return <article key={item.title} className={`imp-card ${detail ? 'has-detail' : ''}${mobile ? ' imp-card-m' : ''}`}>
+          <img src={item.thumb} alt="" loading={index < 3 ? 'eager' : 'lazy'} decoding="async" style={item.focus ? { objectPosition: item.focus } : undefined} />
+          <div className="imp-card-shade" />
+          <span className="imp-card-tag">{item.tag}</span>
+          {detail && <span className="imp-card-play" aria-hidden="true"><i><PlayIcon /></i><b>Watch</b></span>}
+          <div className="imp-card-body"><h3>{item.title}</h3><p>{item.text}</p></div>
+          {detail && <button type="button" className="imp-card-open" aria-haspopup="dialog" onClick={() => setOpen(index)}
+            aria-label={`${item.title}: watch the video and see how Scalric can help`} />}
+        </article>;
+      })}
     </div>
+    {open >= 0 && <ImpactDetail items={cards} index={open} onChange={setOpen} onClose={() => setOpen(-1)} mobile={mobile} />}
     <div className="imp-showcase-bar">
       <div className="imp-progress" aria-hidden="true"><i style={{ width: `${ratio * 100}%`, left: `calc((100% - ${ratio * 100}%) * var(--imp-progress, 0))` }} /></div>
       <div className="imp-arrows"><button type="button" onClick={() => move(-1)} disabled={edge.start} aria-label="Previous">←</button><button type="button" onClick={() => move(1)} disabled={edge.end} aria-label="Next">→</button></div>
