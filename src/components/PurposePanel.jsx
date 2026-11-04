@@ -1,5 +1,5 @@
 import React from 'react';
-import { Arrow, Link, Reveal } from './UI.jsx';
+import { Link, Reveal } from './UI.jsx';
 import { useSeen, useCountTo } from '../lib/motion.js';
 
 // Losses in millions of dollars.
@@ -21,7 +21,6 @@ function MistakeCard({ item, index }) {
   const width = Math.max(6, Math.sqrt(item.cost / biggest) * 100);
   return <li ref={ref} className={`pw-card${seen ? ' is-in' : ''}`} style={{ '--i': index, '--w': `${width}%` }}>
     <Link href={`/insights/${item.slug}`} className="pw-card-link" aria-label={`${item.company}, ${format(item.cost)}: read the insight`}>
-      <span className="pw-go" aria-hidden="true"><Arrow diagonal /></span>
       <b aria-hidden="true"><span>{format(amount)}</span></b>
       <strong>{item.company}</strong>
       <span className="pw-note">{item.note}</span>

@@ -43,16 +43,44 @@ function Hero() {
   </section></>;
 }
 
+// Pictures for the cards. They repeat in order (1, 2, 3, 1, 2, 3 ...) until each card gets its own - add more entries here to replace the repeats.
 const thinkImages = ['/assets/photos/think-dashboard.webp', '/assets/photos/home-insight-ai.webp', '/assets/photos/think-automation-new.webp'];
+// How many cards the row shows.
+const THINK_CARD_COUNT = 6;
 
 function InsightsSection() {
   const track = (event, slug) => window.dispatchEvent(new CustomEvent('scalric:analytics', { detail: { event, slug } }));
+  const cards = insights.slice(0, THINK_CARD_COUNT);
+  const rowRef = React.useRef(null);
+  const [page, setPage] = React.useState(0);
+  const [pages, setPages] = React.useState(1);
+  const [paused, setPaused] = React.useState(false);
+  const pageRef = React.useRef(0);
+  const pagesRef = React.useRef(1);
+  // One step = one card plus the gap. "Pages" = how many positions the row can rest at.
+  const stepOf = () => { const row = rowRef.current; const first = row && row.children[0]; return first ? first.getBoundingClientRect().width + 20 : 0; };
+  const measure = () => {
+    const row = rowRef.current; const step = stepOf();
+    if (!row || !step) return;
+    const visible = Math.max(1, Math.round(row.clientWidth / step));
+    pagesRef.current = Math.max(1, cards.length - visible + 1); setPages(pagesRef.current);
+  };
+  const goTo = (index) => { const row = rowRef.current; if (row) row.scrollTo({ left: index * stepOf(), behavior: 'smooth' }); };
+  React.useEffect(() => { measure(); window.addEventListener('resize', measure); return () => window.removeEventListener('resize', measure); }, []);
+  // Slides on its own every few seconds, loops back to the start, and holds still while someone is hovering or focused on it.
+  React.useEffect(() => {
+    if (paused || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const timer = window.setInterval(() => goTo(pageRef.current + 1 >= pagesRef.current ? 0 : pageRef.current + 1), 3200);
+    return () => window.clearInterval(timer);
+  }, [paused]);
+  const onScroll = () => { const row = rowRef.current; const step = stepOf(); if (!row || !step) return; const at = Math.min(pagesRef.current - 1, Math.round(row.scrollLeft / step)); pageRef.current = at; setPage(at); };
   return <section className="section think-section" id="insights"><div className="think-grid-lines" aria-hidden="true" /><div className="container">
     <Reveal className="think-head"><span className="think-eyebrow">THINKING AHEAD</span><h2>Ideas for what’s next</h2><Link href="/insights" className="think-all" onClick={() => track('view_all_insights_click')}>View all insights <Arrow diagonal /></Link></Reveal>
-    <div className="think-cards">{insights.slice(0, 3).map((item, i) => <Reveal key={item.slug} delay={i * 80}><Link href={`/insights/${item.slug}`} className="think-card" onClick={() => track('insight_card_click', item.slug)}>
+    <div className="think-cards" ref={rowRef} onScroll={onScroll} onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocus={() => setPaused(true)} onBlur={() => setPaused(false)}>{cards.map((item, i) => <Reveal key={item.slug} delay={(i % 3) * 80}><Link href={`/insights/${item.slug}`} className="think-card" onClick={() => track('insight_card_click', item.slug)}>
       <div className="think-card-body"><small>{item.category}</small><h3>{item.title}</h3><span className="think-plus" aria-hidden="true">+</span></div>
-      <img src={thinkImages[i]} alt="" loading="lazy" decoding="async" />
+      <img src={thinkImages[i % thinkImages.length]} alt="" loading="lazy" decoding="async" />
     </Link></Reveal>)}</div>
+    {pages > 1 && <div className="think-dots" role="tablist" aria-label="Slide position">{Array.from({ length: pages }, (_, i) => <button key={i} type="button" role="tab" aria-selected={i === page} aria-label={`Show slide ${i + 1}`} className={i === page ? 'on' : ''} onClick={() => goTo(i)} />)}</div>}
   </div></section>;
 }
 

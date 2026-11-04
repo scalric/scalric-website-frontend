@@ -52,3 +52,8 @@
 /* section heading above the niche box */
 .imp-niche-head{margin-bottom:28px}
 .imp-ngo .imp-niche-head h2{margin:14px 0 0;color:#0b1220;font-size:clamp(38px,5.4vw,76px);line-height:1.02;letter-spacing:-.045em;font-weight:600}
+
+/* Phones: the topic buttons sit in one line you can swipe sideways (class added only when the screen is a phone) */
+.imp-niche-nav.is-row,.imp-ngo-tabs.is-row{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.imp-niche-nav.is-row::-webkit-scrollbar,.imp-ngo-tabs.is-row::-webkit-scrollbar{display:none}
+.imp-niche-nav.is-row button,.imp-ngo-tabs.is-row button{flex:0 0 auto;white-space:nowrap;scroll-snap-align:start}

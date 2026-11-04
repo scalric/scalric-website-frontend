@@ -1,6 +1,7 @@
 import React from 'react';
 import { CountUp, Eyebrow } from './UI.jsx';
 import { proofStats } from '../data/siteContent.js';
+import { useMobile } from '../lib/useMobile.js';
 
 // Each niche: [label, title, text, [three points]]. Copy is placeholder text; replace it with what Scalric will actually offer
 const niches = [
@@ -74,6 +75,7 @@ const barLevels = [[82, 64, 90], [70, 88, 60], [92, 66, 78], [64, 90, 76]];
 
 /** One big rounded blue box per niche, with arrows to move between them and a rotating focus panel inside each. */
 export default function NicheSpotlight() {
+  const mobile = useMobile();
   const [niche, setNiche] = React.useState(0);
   const [active, setActive] = React.useState(0);
   const [paused, setPaused] = React.useState(false);
@@ -95,8 +97,8 @@ export default function NicheSpotlight() {
 
   return <section className="imp-ngo" aria-label="Who the initiative supports, by niche"><div className="container">
     <div className="imp-niche-head"><Eyebrow>WHO WE SUPPORT</Eyebrow><h2>Technology for every<br />kind of mission</h2></div>
-    <div className="imp-niche-nav" role="tablist" aria-label="Choose a niche">
-      {niches.map((item, index) => <button key={item.id} type="button" role="tab" aria-selected={index === niche} className={index === niche ? 'on' : ''} onClick={() => go(index)}>{item.name}</button>)}
+    <div className={`imp-niche-nav${mobile ? ' is-row' : ''}`} role="tablist" aria-label="Choose a niche">
+      {niches.map((item, index) => <button key={item.id} type="button" role="tab" aria-selected={index === niche} className={index === niche ? 'on' : ''} onClick={(event) => { go(index); if (mobile) event.currentTarget.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' }); }}>{item.name}</button>)}
     </div>
 
     <div className="imp-ngo-box" key={current.id} onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
@@ -111,7 +113,7 @@ export default function NicheSpotlight() {
         </div>
       </div>
       <div className="imp-ngo-panel">
-        <div className="imp-ngo-tabs" role="tablist" aria-label={`Ways we support ${current.name}`}>
+        <div className={`imp-ngo-tabs${mobile ? ' is-row' : ''}`} role="tablist" aria-label={`Ways we support ${current.name}`}>
           {current.areas.map(([label], index) => <button key={label} type="button" role="tab" aria-selected={index === active} className={index === active ? 'on' : ''} onClick={() => { setActive(index); setPaused(true); }}>{label}</button>)}
         </div>
         <div className="imp-ngo-card" key={`${current.id}-${area[0]}`} role="tabpanel">

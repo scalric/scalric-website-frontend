@@ -54,11 +54,11 @@ export default function OpeningsPage({ search = '' }) {
   const track = (slug) => window.dispatchEvent(new CustomEvent('scalric:analytics', { detail: { event: 'careers_view_role_click', slug } }));
 
   return <main className="opn">
-    {mobile && <img className="m-banner-photo" src="/assets/photos/careers-banner.webp" alt="" fetchPriority="high" decoding="async" />}
+    {mobile && <div className="m-over-media"><img className="m-banner-photo" src="/assets/photos/careers-banner.webp" alt="" fetchPriority="high" decoding="async" /><div className="m-over-text"><span className="ah-eyebrow"><i />OPEN OPPORTUNITIES</span><h1>Find your role</h1></div></div>}
     <section className={`opn-hero${mobile ? ' opn-hero-m' : ''}`}><div className="container">
       <div className="breadcrumbs"><Link href="/">Home</Link><span>/</span><Link href="/careers/openings">Careers</Link><span>/</span><span>Open roles</span></div>
-      <Eyebrow>OPEN OPPORTUNITIES</Eyebrow>
-      <h1>Find your role</h1>
+      {!mobile && <Eyebrow>OPEN OPPORTUNITIES</Eyebrow>}
+      {!mobile && <h1>Find your role</h1>}
       <p>Search every current opening at Scalric. Filter by location, team or how you like to work, then apply in a few minutes.</p>
       <form className="opn-filters" role="search" onSubmit={(event) => event.preventDefault()}>
         <label className="opn-search"><span>Job title or keyword</span><input type="search" value={state.q} onChange={(event) => update({ q: event.target.value })} placeholder="Search roles" /></label>

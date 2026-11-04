@@ -1,5 +1,4 @@
 import React from 'react';
-import { useMobile } from '../lib/useMobile.js';
 
 const slides = [
   { src: '/assets/photos/industries-slide-3.webp', title: 'A clear view of what matters.', note: 'We bring focus to the questions worth answering.' },
@@ -13,7 +12,6 @@ const slides = [
 
 /** Looping slideshow: tall photo panels glide left one at a time, forever; pauses on hover or focus. */
 export default function IndustrySlideshow() {
-  const mobile = useMobile();
   const [index, setIndex] = React.useState(0);
   const [animate, setAnimate] = React.useState(true);
   const paused = React.useRef(false);
@@ -38,7 +36,7 @@ export default function IndustrySlideshow() {
   const onEnd = () => { if (index >= count) { setAnimate(false); setIndex(index - count); } };
   const hold = (value) => () => { paused.current = value; };
 
-  return <section className={`ind-slides${mobile ? ' is-m' : ''}`} aria-roledescription="carousel" aria-label="Industry highlights" onMouseEnter={hold(true)} onMouseLeave={hold(false)} onFocus={hold(true)} onBlur={hold(false)}>
+  return <section className={`ind-slides`} aria-roledescription="carousel" aria-label="Industry highlights" onMouseEnter={hold(true)} onMouseLeave={hold(false)} onFocus={hold(true)} onBlur={hold(false)}>
     <div className="ind-slides-view">
       <div className={`ind-slides-track${animate ? '' : ' is-still'}`} style={{ '--i': index }} onTransitionEnd={onEnd}>
         {loop.map((slide, i) => <figure className="ind-slide" key={i} aria-hidden={i >= count}>

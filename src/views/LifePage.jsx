@@ -38,9 +38,11 @@ export default function LifePage() {
   const mobile = useMobile();
   return <main className="life">
     {mobile ? <section className="life-hero-m">
-      <img src={heroSlides[0]} alt="" fetchPriority="high" decoding="async" />
+      <div className="m-over-media">
+        <img src={heroSlides[0]} alt="" fetchPriority="high" decoding="async" />
+        <div className="m-over-text"><span className="ah-eyebrow"><i />CAREERS</span><h1>Life at Scalric</h1></div>
+      </div>
       <div className="life-hero-m-box">
-        <h1>Life at Scalric</h1>
         <p>Good work comes from people who trust each other. Here is what that looks like day to day.</p>
       </div>
     </section> : <section className="life-hero">
