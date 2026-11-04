@@ -23,7 +23,7 @@ const industries = [
 const tiles = [
   // Reads left to right, top to bottom in the same order as the list: Healthcare, Home services, Restaurants, Gyms & studios (gym), Salons, Gyms & studios (studio sport).
   { industry: 0, image: '/assets/photos/industry-healthcare-new.webp', pos: '45% 52%' },
-  { industry: 1, image: '/assets/photos/industry-home-services.webp', pos: '50% 30%' },
+  { industry: 1, image: '/assets/photos/industry-home-services-photographer.webp', pos: '45% 40%' },
   { industry: 2, image: '/assets/photos/industry-restaurants-new.webp', pos: '45% 30%' },
   { industry: 3, image: '/assets/photos/industry-gyms-new.webp', pos: '50% 28%' },
   { industry: 4, image: '/assets/photos/industry-salons-new.webp', pos: '50% 40%' },
@@ -31,7 +31,9 @@ const tiles = [
 ];
 
 export default function IndustriesTarget() {
-  const [active, setActive] = React.useState(1);
+  // Nothing is enlarged until a photo or its row on the right is hovered/focused.
+  const [active, setActive] = React.useState(null);
+  const clear = () => setActive(null);
   // Conditional rendering: when the section stacks into one column (tablet/phone), the photos come after the numbers, not before.
   const [mobile, setMobile] = React.useState(false);
   React.useEffect(() => {
@@ -47,7 +49,7 @@ export default function IndustriesTarget() {
       <h2 className="it-heading" id="it-title">Industries we<br />TARGET</h2>
       <p className="it-lede">Each industry comes with one real number that shows the problem, or the gain from fixing it.</p>
       <ul className="it-list">{industries.map((item, i) => <li key={item.title}>
-        <Link href={`/insights/${item.slug}`} className={`it-row${active === i ? ' is-active' : ''}`} style={{ '--tone': item.tone }} onMouseEnter={() => setActive(i)} onFocus={() => setActive(i)}>
+        <Link href={`/insights/${item.slug}`} className={`it-row${active === i ? ' is-active' : ''}`} style={{ '--tone': item.tone }} onMouseEnter={() => setActive(i)} onFocus={() => setActive(i)} onMouseLeave={clear} onBlur={clear}>
           <span className="it-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">{icons[item.icon]}</svg></span>
           <strong className="it-stat">{item.stat}</strong>
           <span className="it-row-copy"><b>{item.title}</b><span>{item.label}</span><small>{item.fix}</small></span>
@@ -55,13 +57,13 @@ export default function IndustriesTarget() {
       </li>)}</ul>
     </Reveal>
     <Reveal className="it-poster-wrap"><div className="it-grid" role="group" aria-label="Industry photos">
-      {tiles.map((tile, i) => { const item = industries[tile.industry]; return <Link key={i} href={`/insights/${item.slug}`} aria-label={`${item.title}: read the insight`} className={`it-photo${active === tile.industry ? ' is-active' : ''}`} onMouseEnter={() => setActive(tile.industry)}>
+      {tiles.map((tile, i) => { const item = industries[tile.industry]; return <Link key={i} href={`/insights/${item.slug}`} aria-label={`${item.title}: read the insight`} className={`it-photo${active === tile.industry ? ' is-active' : ''}`} onMouseEnter={() => setActive(tile.industry)} onFocus={() => setActive(tile.industry)} onMouseLeave={clear} onBlur={clear}>
         <img src={tile.image} alt="" loading="lazy" style={{ objectPosition: tile.pos }} />
       </Link>; })}
     </div></Reveal>
     </> : <>
     <Reveal className="it-poster-wrap"><div className="it-grid" role="group" aria-label="Industry photos">
-      {tiles.map((tile, i) => { const item = industries[tile.industry]; return <Link key={i} href={`/insights/${item.slug}`} aria-label={`${item.title}: read the insight`} className={`it-photo${active === tile.industry ? ' is-active' : ''}`} onMouseEnter={() => setActive(tile.industry)}>
+      {tiles.map((tile, i) => { const item = industries[tile.industry]; return <Link key={i} href={`/insights/${item.slug}`} aria-label={`${item.title}: read the insight`} className={`it-photo${active === tile.industry ? ' is-active' : ''}`} onMouseEnter={() => setActive(tile.industry)} onFocus={() => setActive(tile.industry)} onMouseLeave={clear} onBlur={clear}>
         <img src={tile.image} alt="" loading="lazy" style={{ objectPosition: tile.pos }} />
       </Link>; })}
     </div></Reveal>
@@ -69,7 +71,7 @@ export default function IndustriesTarget() {
       <h2 className="it-heading" id="it-title">Industries we<br />TARGET</h2>
       <p className="it-lede">Each industry comes with one real number that shows the problem, or the gain from fixing it.</p>
       <ul className="it-list">{industries.map((item, i) => <li key={item.title}>
-        <Link href={`/insights/${item.slug}`} className={`it-row${active === i ? ' is-active' : ''}`} style={{ '--tone': item.tone }} onMouseEnter={() => setActive(i)} onFocus={() => setActive(i)}>
+        <Link href={`/insights/${item.slug}`} className={`it-row${active === i ? ' is-active' : ''}`} style={{ '--tone': item.tone }} onMouseEnter={() => setActive(i)} onFocus={() => setActive(i)} onMouseLeave={clear} onBlur={clear}>
           <span className="it-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">{icons[item.icon]}</svg></span>
           <strong className="it-stat">{item.stat}</strong>
           <span className="it-row-copy"><b>{item.title}</b><span>{item.label}</span><small>{item.fix}</small></span>

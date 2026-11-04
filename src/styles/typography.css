@@ -314,7 +314,7 @@ body .think-section .think-card:hover{box-shadow:none}
 }
 
 /* Thinking ahead row: moves sideways only - never up or down while dragging or swiping */
-body .think-cards{overflow-y:hidden;overscroll-behavior:contain;touch-action:pan-x pan-y}
+body .think-cards{overflow-y:hidden;overscroll-behavior-x:contain;overscroll-behavior-y:auto;touch-action:pan-x pan-y}
 body .think-cards .think-card,body .think-cards .think-card img{-webkit-user-drag:none;user-select:none}
 body .think-cards>*{transform:none!important}
 @media (max-width:760px){
