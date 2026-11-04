@@ -1990,6 +1990,8 @@ main>section:has(.principles-grid,.process-track,.hiring-steps){background:#eef3
 @keyframes tc-in{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.tc-chip{animation:none}.tc-mark{transition:none}}
 .tc-chip{padding:12px 24px!important}
+/* Mobile: keep the topic pills in one row that scrolls sideways inside itself, not the whole page */
+@media (max-width:700px){.topic-chips.tc{flex-wrap:nowrap!important;overflow-x:auto!important;overflow-y:hidden!important;overscroll-behavior-x:contain;scrollbar-width:none}.topic-chips.tc::-webkit-scrollbar{display:none}}
 
 /* Latest perspectives: open editorial layout instead of boxed cards */
 .insights-list-section{background:#fff!important}
