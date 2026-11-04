@@ -21,11 +21,12 @@ const industries = [
 // Plain photo grid that fills the whole left column. Each tile maps to an industry row (by index) so hover and links stay in sync.
 // `pos` keeps faces in frame when a photo is cropped.
 const tiles = [
+  // Reads left to right, top to bottom in the same order as the list: Healthcare, Home services, Restaurants, Gyms & studios (gym), Salons, Gyms & studios (studio sport).
   { industry: 0, image: '/assets/photos/industry-healthcare-new.webp', pos: '45% 52%' },
-  { industry: 3, image: '/assets/photos/industry-photographer.webp', pos: '50% 40%' },
-  { industry: 2, image: '/assets/photos/industry-restaurants-new.webp', pos: '45% 30%' },
-  { industry: 4, image: '/assets/photos/industry-salons-new.webp', pos: '50% 40%' },
   { industry: 1, image: '/assets/photos/industry-home-services.webp', pos: '50% 30%' },
+  { industry: 2, image: '/assets/photos/industry-restaurants-new.webp', pos: '45% 30%' },
+  { industry: 3, image: '/assets/photos/industry-gyms-new.webp', pos: '50% 28%' },
+  { industry: 4, image: '/assets/photos/industry-salons-new.webp', pos: '50% 40%' },
   { industry: 3, image: '/assets/photos/industry-sports-new.webp', pos: '42% 36%' },
 ];
 

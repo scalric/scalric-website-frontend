@@ -33,10 +33,14 @@ export default function ArtHero({ art = 'wave', eyebrow, title, text, children, 
   // Phones: the people-photo banners show the whole photo at its natural size (every face in view) with the text box underneath, never on top of it.
   if (mobile && PHOTO_ARTS.includes(art)) {
     return <section className={`ah-m ah-m-${art}`}>
-      <img className="ah-m-img" src={config.slides ? config.slides[0] : config.src} alt="" fetchPriority="high" decoding="async" />
+      <div className="m-over-media">
+        <img className="ah-m-img" src={config.slides ? config.slides[0] : config.src} alt="" fetchPriority="high" decoding="async" />
+        <div className="m-over-text">
+          <span className="ah-eyebrow"><i />{eyebrow || config.eyebrow}</span>
+          <h1>{title}</h1>
+        </div>
+      </div>
       <div className="ah-m-copy">
-        <span className="ah-eyebrow"><i />{eyebrow || config.eyebrow}</span>
-        <h1>{title}</h1>
         <p>{text}</p>
         {children && <div className="ah-actions">{children}</div>}
       </div>
