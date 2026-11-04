@@ -12,3 +12,6 @@ dist/
 
 .next/
 next-env.d.ts
+
+# Local SQLite database and uploaded files (personal data)
+database/
