@@ -54,7 +54,10 @@ export default function TitleCase() {
       list.forEach(fix);
     };
     fixTree(root);
-    document.documentElement.classList.add('tc-ready');
+    // Reveal the page once fonts are in (GapGuard checks justified text first), or after 900ms at the latest.
+    const show = () => window.requestAnimationFrame(() => document.documentElement.classList.add('tc-ready'));
+    const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
+    Promise.race([fontsReady, new Promise((resolve) => window.setTimeout(resolve, 900))]).then(show);
     const observer = new MutationObserver((records) => {
       records.forEach((record) => {
         if (record.type === 'characterData') fix(record.target);
