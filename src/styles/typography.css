@@ -1,6 +1,10 @@
 /* Site-wide typography: one font, Title Case, justified copy, no stray gaps (mobile + desktop). */
 body :not(.adm-root):not(.adm-root *):not(svg):not(svg *):not(code):not(pre){font-family:var(--font-manrope),Manrope,Arial,sans-serif!important}
 html:not(.tc-ready) body :where(h1,h2,h3,h4,h5,h6,p,li,a,button,label,span,small,b,strong,em,td,th,dt,dd,blockquote,figcaption,summary,legend,.eyebrow,.topic-pill):not(.adm-root *){text-transform:capitalize!important}
+/* Hold the very first paint until title case, fonts and justified-gap fixes are applied, so text never visibly changes after it shows.
+   The animation is a failsafe: if scripts are slow or blocked the page still appears after 1.5s. */
+html:not(.tc-ready) body{visibility:hidden;animation:tc-failsafe 0s 1.5s forwards}
+@keyframes tc-failsafe{to{visibility:visible}}
 input,textarea,select{text-transform:none!important}
 body :where(p,li,blockquote,dd,figcaption){text-align:justify;text-justify:inter-word;text-align-last:left;hyphens:auto;-webkit-hyphens:auto;word-spacing:normal;overflow-wrap:break-word}
 body :where(h1,h2,h3,h4,h5,h6){text-align:left;word-spacing:normal;hyphens:manual}

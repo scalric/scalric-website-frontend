@@ -47,14 +47,17 @@ function check() {
 export default function GapGuard() {
   useEffect(() => {
     let timer = 0;
-    const schedule = () => { clearTimeout(timer); timer = window.setTimeout(() => (window.requestIdleCallback || window.setTimeout)(check), 800); };
+    // Scroll/resize re-checks can wait; new content (a page change) is checked within a few frames so justified text doesn't visibly snap to left-aligned.
+    const schedule = (wait = 800) => { clearTimeout(timer); timer = window.setTimeout(() => (wait > 100 ? (window.requestIdleCallback || window.setTimeout)(check) : check()), wait); };
+    // First pass runs as soon as fonts are ready, before the page is revealed (see TitleCase).
+    if (document.fonts) document.fonts.ready.then(check); else check();
     schedule();
-    window.addEventListener('resize', schedule);
-    window.addEventListener('scroll', schedule, { passive: true });
-    const observer = new MutationObserver(schedule);
+    const onResize = () => schedule();
+    window.addEventListener('resize', onResize);
+    window.addEventListener('scroll', onResize, { passive: true });
+    const observer = new MutationObserver(() => schedule(40));
     observer.observe(document.body, { childList: true, subtree: true });
-    document.fonts?.ready.then(schedule);
-    return () => { clearTimeout(timer); window.removeEventListener('resize', schedule); window.removeEventListener('scroll', schedule); observer.disconnect(); };
+    return () => { clearTimeout(timer); window.removeEventListener('resize', onResize); window.removeEventListener('scroll', onResize); observer.disconnect(); };
   }, []);
   return null;
 }

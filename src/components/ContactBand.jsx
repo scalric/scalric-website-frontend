@@ -13,7 +13,7 @@ export default function ContactBand() {
     return () => mq.removeEventListener('change', update);
   }, []);
   return <section className="cx-section"><div className="cx-stage">
-    <div className={`cx-photo${mobile ? ' cx-photo-m' : ''}`}><img src="/assets/photos/contact-band-team.webp" alt="" loading="lazy" decoding="async" /></div>
+    <div className={`cx-photo${mobile ? ' cx-photo-m' : ''}`}><img src={mobile ? '/assets/photos/contact-band-mobile.webp' : '/assets/photos/contact-band-team.webp'} alt="" loading="lazy" decoding="async" /></div>
     <Reveal className="cx-card">
       <span className="cx-eyebrow">START A CONVERSATION</span>
       <h2>What could we make possible?</h2>
