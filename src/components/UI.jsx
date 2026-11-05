@@ -17,12 +17,23 @@ export function Arrow({ diagonal = false }) {
   return <span className="arrow" aria-hidden="true">→</span>;
 }
 
+// Runs before the browser paints on the client; plain effect on the server (no warning).
+const useIsoLayoutEffect = typeof window === 'undefined' ? React.useEffect : React.useLayoutEffect;
+
 export function Reveal({ children, className = '', delay = 0 }) {
   const ref = React.useRef(null);
-  React.useEffect(() => {
+  useIsoLayoutEffect(() => {
     const element = ref.current;
     if (!element || !('IntersectionObserver' in window)) {
       element?.classList.add('is-visible');
+      return undefined;
+    }
+    // Already on screen when it mounts (every page change): show it straight away so nothing blinks in.
+    // The class is added before the first paint, so there is no fade from invisible.
+    const top = element.getBoundingClientRect().top;
+    if (top < window.innerHeight * 0.95) {
+      element.style.transition = 'none';
+      element.classList.add('is-visible');
       return undefined;
     }
     const observer = new IntersectionObserver(([entry]) => {

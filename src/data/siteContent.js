@@ -167,30 +167,6 @@ export const insights = [
     ],
   },
   {
-    slug: 'shipping-small-learning-fast', category: 'SaaS & Software',
-    tags: ['SaaS & Software'], status: 'editorial-preview', publishDate: null,
-    title: 'Shipping small and learning fast: how software earns its place',
-    dek: 'Small, frequent releases keep a product close to what people need and make each change easier to judge.',
-    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-saas.webp', featured: false, source: null,
-    body: [
-      { heading: 'Release in thin slices', text: 'A narrow, working version in front of real users teaches more than a long build behind closed doors.' },
-      { heading: 'Watch how it is used', text: 'Pair what people say with what they do in the product, and let the pattern guide the next change.' },
-      { heading: 'Keep the foundations healthy', text: 'Time spent on tests, tooling and tidy code is what keeps frequent releases safe over the long run.' },
-    ],
-  },
-  {
-    slug: 'cost-aware-cloud-design', category: 'Cloud & Infrastructure',
-    tags: ['Cloud & Infrastructure'], status: 'editorial-preview', publishDate: null,
-    title: 'Cost-aware cloud design: building for growth without waste',
-    dek: 'Cloud costs follow design decisions. Making them visible early helps a platform grow in a predictable way.',
-    author: 'Scalric Editorial', heroImage: '/assets/photos/insight-cloud.webp', featured: false, source: null,
-    body: [
-      { heading: 'Make usage visible', text: 'Tag resources by team and purpose so it is clear what each part of the platform costs to run.' },
-      { heading: 'Match capacity to demand', text: 'Scale up for busy periods and back down afterwards, rather than sizing everything for the peak.' },
-      { heading: 'Review on a schedule', text: 'A regular look at the largest items finds unused resources and opportunities to simplify.' },
-    ],
-  },
-  {
     slug: 'unanswered-clinic-calls', category: 'Artificial Intelligence',
     tags: ['Artificial Intelligence'], status: 'editorial-preview', publishDate: null,
     title: 'Unanswered calls: the quiet leak in clinic bookings',

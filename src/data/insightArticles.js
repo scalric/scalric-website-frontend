@@ -133,26 +133,6 @@ export const articleContent = {
     ],
     takeaways: ['Separate rule-based steps from judgement calls.', 'Hand over with full context.', 'Let people pause and override.', 'Review exceptions to refine the system.'],
   },
-  'shipping-small-learning-fast': {
-    lead: 'Small, frequent releases keep a product close to what people need. They also make each change easier to understand, test and, if necessary, undo.',
-    sections: [
-      ['Release in thin slices', 'A narrow, working version in front of real users teaches more than a long build behind closed doors. Choose the smallest slice that delivers genuine value.', 'Each release should leave the product better than before.'],
-      ['Watch how it is used', 'Pair what people say with what they do in the product. Usage patterns often reveal needs that interviews miss.', 'Let that evidence guide what you build or remove next.'],
-      ['Keep the foundations healthy', 'Time spent on tests, tooling and tidy code is what keeps frequent releases safe over the long run. Neglect it and speed turns into delay.', 'Build it into the routine rather than treating it as a separate project.'],
-      ['Close the loop with customers', 'Tell people what changed and why. Visible progress builds confidence, and the feedback that follows feeds the next cycle.', 'This rhythm of release, learn and respond becomes a lasting advantage.'],
-    ],
-    takeaways: ['Ship the smallest valuable slice.', 'Combine feedback with real usage.', 'Invest steadily in quality foundations.', 'Tell customers what has improved.'],
-  },
-  'cost-aware-cloud-design': {
-    lead: 'Cloud costs follow design decisions. Making them visible early helps a platform grow in a predictable way, without surprises at the end of the month.',
-    sections: [
-      ['Make usage visible', 'Tag resources by team and purpose so it is clear what each part of the platform costs to run. Shared visibility starts useful conversations.', 'It also makes it easier to link spending to the value it creates.'],
-      ['Match capacity to demand', 'Scale up for busy periods and back down afterwards, rather than sizing everything for the peak. Many workloads can also be scheduled or paused when not needed.', 'Right-sizing is one of the simplest ways to reduce waste.'],
-      ['Design with cost in mind', 'Choices about storage, data movement and service types all affect the bill. Consider cost alongside performance and reliability when making architecture decisions.', 'A small design change early can avoid a large expense later.'],
-      ['Review on a schedule', 'A regular look at the largest items finds unused resources and opportunities to simplify. Keep the review short and assign clear actions.', 'Treat cost as part of normal engineering practice rather than an annual clean-up.'],
-    ],
-    takeaways: ['Tag and track spending by team.', 'Scale capacity with demand.', 'Weigh cost in design decisions.', 'Review the largest items regularly.'],
-  },
   'unanswered-clinic-calls': {
     lead: 'The number to keep in mind is 32%: that share of clinic calls goes unanswered. Each one is a patient who wanted an appointment or an answer and did not get one.',
     sections: [

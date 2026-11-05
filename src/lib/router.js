@@ -20,10 +20,13 @@ export function registerRouter(instance) { router = instance; }
 export function navigate(path) {
   const target = new URL(path, window.location.origin);
   const url = `${target.pathname}${target.search}${target.hash}`;
+  const samePage = target.pathname === window.location.pathname;
   if (router) router.push(url, { scroll: false }); else window.location.assign(url);
   if (target.hash) {
     scrollToAnchor(target.hash.slice(1));
-  } else {
+  } else if (samePage) {
+    // Same page: glide back to the top. A different page starts at the top by itself once it has loaded (SiteShell),
+    // so scrolling the page you are leaving first made the screen jump before the new one appeared.
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
