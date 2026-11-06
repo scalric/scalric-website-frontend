@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from './UI.jsx';
 import { usePathname } from '../lib/router.js';
 
+const legalLinks = [['Terms', '/terms'], ['Security', '/security'], ['DPA', '/dpa'], ['Responsible Disclosure', '/responsible-disclosure']];
+
 const footerGroups = [
   ['What we do', ['Overview', '/what-we-do'], ['SaaS & software', '/what-we-do#saas'], ['Artificial intelligence', '/what-we-do#ai'], ['Data & automation', '/what-we-do#data-automation'], ['Consulting', '/what-we-do#consulting']],
   ['Company', ['About Scalric', '/company'], ['Careers', '/careers/openings'], ['Life at Scalric', '/careers/life']],
@@ -67,6 +69,6 @@ export default function Footer() {
         {footerGroups.map(([title, ...links]) => <div className="sf-col" key={title}><h3>{title}</h3><ul>{links.map(([label, href]) => <li key={label}><Link href={href}>{label}</Link></li>)}</ul></div>)}
       </nav>
     </div>
-    <div className="container sf-bottom"><span className="sf-copy">© {new Date().getFullYear()} Scalric. All rights reserved</span><span className="sf-tag">Technology · Consulting · Innovation</span></div>
+    <div className="container sf-bottom"><span className="sf-copy">© {new Date().getFullYear()} Scalric. All rights reserved</span><ul className="sf-legal" aria-label="Legal">{legalLinks.map(([label, href]) => <li key={label}><Link href={href}>{label}</Link></li>)}</ul><span className="sf-tag">Technology · Consulting · Innovation</span></div>
   </footer>;
 }
