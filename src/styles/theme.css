@@ -2731,3 +2731,6 @@ body .legal-intro .eyebrow i{background:#1155d9}
 .sf-legal{display:flex;flex-wrap:wrap;gap:6px 22px;margin:0;padding:0;list-style:none}
 .sf-legal a{font-size:13px;color:#fff;opacity:.75;text-decoration:none}
 .sf-legal a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px}
+
+.form-grid{align-items:start}
+.form-grid>label{align-content:start;align-self:start}
