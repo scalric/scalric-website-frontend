@@ -2692,3 +2692,42 @@ body main .life-cta p,body main .life-cta h2{color:#fff!important}
 body main .ind-banner .ind-banner-copy h1{white-space:nowrap!important;font-size:clamp(22px,calc((36vw - 110px)/15),56px)!important;line-height:1.12}
 body main .ind-banner .ind-banner-copy h1 .typed{white-space:nowrap}
 @media (max-width:860px){body main .ind-banner .ind-banner-copy h1{font-size:clamp(24px,calc((100vw - 40px)/13.5),44px)!important;margin:14px 0 16px}body main .ind-banner .ind-banner-copy p{max-width:none;font-size:16px;line-height:1.6}}
+
+/* Legal and trust pages (Terms, Security, DPA, Responsible Disclosure): centred, with a page switcher and collapsible sections */
+.legal-intro .page-intro-inner{text-align:left}
+body .legal-intro .eyebrow{justify-content:flex-start;color:#1155d9}
+body .legal-intro .eyebrow i{background:#1155d9}
+.legal-section{padding:clamp(32px,4vw,56px) 0 clamp(64px,7vw,104px);background:#fff}
+.legal-body{max-width:860px;margin-inline:auto}
+.legal-body p,.legal-body li{font-size:17px;line-height:1.75;color:#2b3445}
+.legal-body p{margin:0 0 16px}
+.legal-body ul{display:grid;gap:10px;margin:0 0 20px;padding-left:22px}
+.legal-body h3{margin:28px 0 12px;font-size:clamp(19px,1.7vw,23px);line-height:1.3;color:#0b1220}
+.legal-body strong{color:#0b1220;font-weight:700}
+.legal-body mark{padding:0 3px;border-radius:3px;background:#fff1c7;color:inherit}
+.legal-toolbar{display:flex;justify-content:space-between;align-items:center;margin:28px 0 8px;font-size:13px;color:#66756c}
+.legal-toolbar button{padding:6px 0;border:0;background:none;font:inherit;font-weight:600;color:#1155d9;cursor:pointer}
+.legal-toolbar button:hover{text-decoration:underline;text-underline-offset:4px}
+.legal-item{border-bottom:1px solid #e5e7eb;scroll-margin-top:110px}
+.legal-toolbar+.legal-item{border-top:1px solid #e5e7eb}
+.legal-item h2{margin:0}
+.legal-item h2 button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;border:0;background:none;text-align:left;font:inherit;font-size:clamp(18px,1.8vw,22px);font-weight:700;line-height:1.3;color:#0b1220;cursor:pointer;transition:color .2s}
+.legal-item h2 button:hover,.legal-item.is-open h2 button{color:#1155d9}
+.legal-item h2 button i{flex:none;width:11px;height:11px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-3px);transition:transform .25s}
+.legal-item.is-open h2 button i{transform:rotate(-135deg) translateY(-3px)}
+.legal-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease}
+.legal-item.is-open .legal-panel{grid-template-rows:1fr}
+.legal-panel>div{overflow:hidden}
+.legal-panel-inner{padding:0 0 18px}
+.legal-table{margin:8px 0 24px;overflow-x:auto;border:1px solid #e5e7eb;-webkit-overflow-scrolling:touch}
+.legal-table table{width:100%;min-width:560px;border-collapse:collapse}
+.legal-table th,.legal-table td{padding:12px 16px;text-align:left;vertical-align:top;font-size:15px;line-height:1.6;color:#2b3445;border-bottom:1px solid #e5e7eb}
+.legal-table th{background:#f4f6fa;font-weight:700;color:#0b1220}
+.legal-table tr:last-child td{border-bottom:0}
+.legal-table td:first-child{font-weight:600;color:#0b1220}
+@media (prefers-reduced-motion:reduce){.legal-panel,.legal-item h2 button i{transition:none}}
+
+/* Footer: legal links sit in the bottom strip at the same size as the copyright line */
+.sf-legal{display:flex;flex-wrap:wrap;gap:6px 22px;margin:0;padding:0;list-style:none}
+.sf-legal a{font-size:13px;color:#fff;opacity:.75;text-decoration:none}
+.sf-legal a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px}
