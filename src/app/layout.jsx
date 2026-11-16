@@ -16,7 +16,7 @@ import '@/styles/typography.css';
 import '@/styles/impact-detail.css';
 import '@/styles/mobile-hero.css';
 
-const description = 'Scalric studies complex problems and builds technology and consulting solutions for measurable business and social impact.';
+const description = 'Scalric is a product engineering company in Hyderabad, India, building AI-powered software products and applications.';
 
 const SITE_URL = 'https://www.scalric.com';
 const title = 'Scalric — Technology & Consulting for Measurable Impact';
@@ -33,7 +33,9 @@ export const metadata = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
-    { '@type': 'Organization', '@id': `${SITE_URL}/#organization`, name: 'Scalric', url: SITE_URL, logo: `${SITE_URL}/assets/favicon-512.png`, description },
+    { '@type': 'Organization', '@id': `${SITE_URL}/#organization`, name: 'Scalric', url: SITE_URL, logo: `${SITE_URL}/assets/favicon-512.png`, description,
+      address: { '@type': 'PostalAddress', addressLocality: 'Hyderabad', addressRegion: 'Telangana', addressCountry: 'IN' },
+      sameAs: ['https://www.linkedin.com/company/scalric', 'https://www.instagram.com/scalric'] },
     { '@type': 'WebSite', '@id': `${SITE_URL}/#website`, url: SITE_URL, name: 'Scalric', publisher: { '@id': `${SITE_URL}/#organization` }, inLanguage: 'en' },
   ],
 };
