@@ -6,19 +6,19 @@ import { prefetchRoles } from '../lib/roles.js';
 const menus = {
   'What We Do': [
     ['Overview', '/what-we-do', 'Find the right path from problem to outcome.'],
-    ['SaaS & software', '/what-we-do#saas', 'Shape digital products around real needs.'],
-    ['Artificial intelligence', '/what-we-do#ai', 'Apply AI with a clear purpose.'],
-    ['Data & automation', '/what-we-do#data-automation', 'Make information and operations work together.'],
-    ['Consulting', '/what-we-do#consulting', 'Connect strategy to meaningful delivery.'],
+    ['SaaS & software', '/what-we-do/saas', 'Shape digital products around real needs.'],
+    ['Artificial intelligence', '/what-we-do/ai', 'Apply AI with a clear purpose.'],
+    ['Data & automation', '/what-we-do/data-automation', 'Make information and operations work together.'],
+    ['Consulting', '/what-we-do/consulting', 'Connect strategy to meaningful delivery.'],
   ],
   Industries: [
     ['Explore industries', '/industries', 'A starting point for sector-specific perspectives.'],
-    ['Our impact', '/industries#impact', 'Real results across the sectors we serve.'],
-    ['How we deliver', '/industries#how', 'The steps behind every engagement.'],
+    ['Our impact', '/industries/impact', 'Real results across the sectors we serve.'],
+    ['How we deliver', '/industries/how', 'The steps behind every engagement.'],
   ],
   Insights: [
     ['View all insights', '/insights', 'Ideas on technology, business and transformation.'],
-    ['Success stories', '/insights#success-stories', 'Real examples of what worked.'],
+    ['Success stories', '/insights/success-stories', 'Real examples of what worked.'],
   ],
   Company: [
     ['About Scalric', '/company', 'Why we exist and how we work.'],

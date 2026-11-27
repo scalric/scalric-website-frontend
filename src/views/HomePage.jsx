@@ -40,7 +40,7 @@ function Hero() {
       <p className="mh-lede" data-no-titlecase>Turning ideas into intelligent solutions for a smarter tomorrow.</p>
       <div className="mh-actions">
         <Link href="/what-we-do" className="mh-btn mh-btn-solid">What We Do {btnArrow}</Link>
-        <Link href="/industries#impact" className="mh-btn mh-btn-outline" onClick={impactClick}>See Our Impact {btnArrow}</Link>
+        <Link href="/industries/impact" className="mh-btn mh-btn-outline" onClick={impactClick}>See Our Impact {btnArrow}</Link>
       </div>
     </div>
     <button type="button" className="mh-scroll" aria-label="Scroll to content" onClick={() => document.querySelector('main')?.scrollIntoView({ behavior: 'smooth' })}>
@@ -53,7 +53,7 @@ function Hero() {
       <Eyebrow>GLOBAL RESEARCH · CONSULTANCY · AI SOLUTIONS</Eyebrow>
       <SplitHeading as="h1" lines={['Engineering', 'the difference']} accent={1} className="hero-title" startDelay={2} />
       <p className="hero-lede" data-no-titlecase>Turning ideas into intelligent solutions for a smarter tomorrow.</p>
-      <div className="hero-actions"><Link href="/what-we-do" className="button button-green">What we do</Link><Link href="/industries#impact" className="button button-outline" onClick={() => window.dispatchEvent(new CustomEvent('scalric:analytics', { detail: { event: 'impact_teaser_click' } }))}>See our impact</Link></div>
+      <div className="hero-actions"><Link href="/what-we-do" className="button button-green">What we do</Link><Link href="/industries/impact" className="button button-outline" onClick={() => window.dispatchEvent(new CustomEvent('scalric:analytics', { detail: { event: 'impact_teaser_click' } }))}>See our impact</Link></div>
     </div>
   </section>;
   return <><link rel="preload" as="image" href="/assets/hero-home-poster.webp" media="(min-width: 681px)" fetchPriority="high" /><link rel="preload" as="image" href="/assets/hero-mobile-v2-poster.webp" media="(max-width: 680px)" fetchPriority="high" />{mobile === null ? <><div className="ssr-m-680">{renderHero(true)}</div><div className="ssr-d-680">{renderHero(false)}</div></> : renderHero(mobile)}</>;

@@ -5,7 +5,7 @@ import { usePathname } from '../lib/router.js';
 const legalLinks = [['Terms', '/terms'], ['Security', '/security'], ['DPA', '/dpa'], ['Responsible Disclosure', '/responsible-disclosure']];
 
 const footerGroups = [
-  ['What we do', ['Overview', '/what-we-do'], ['SaaS & software', '/what-we-do#saas'], ['Artificial intelligence', '/what-we-do#ai'], ['Data & automation', '/what-we-do#data-automation'], ['Consulting', '/what-we-do#consulting']],
+  ['What we do', ['Overview', '/what-we-do'], ['SaaS & software', '/what-we-do/saas'], ['Artificial intelligence', '/what-we-do/ai'], ['Data & automation', '/what-we-do/data-automation'], ['Consulting', '/what-we-do/consulting']],
   ['Company', ['About Scalric', '/company'], ['Careers', '/careers/openings'], ['Life at Scalric', '/careers/life']],
   ['Explore', ['Industries', '/industries'], ['Insights', '/insights'], ['Talk to us', '/contact']],
 ];

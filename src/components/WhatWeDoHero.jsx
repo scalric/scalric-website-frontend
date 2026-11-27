@@ -10,7 +10,7 @@ export default function WhatWeDoHero() {
     text="Scalric brings technology, consulting and innovation together to help organizations make progress on consequential challenges."
     chips={[]}
   >
-    <a href="#capability-overview" className="button button-green">Explore capabilities <Arrow diagonal /></a>
+    <Link href="/what-we-do/overview" className="button button-green">Explore capabilities <Arrow diagonal /></Link>
     <Link href="/contact" className="btn-talk"><span>Talk to us</span></Link>
   </ArtHero>;
 }

@@ -17,8 +17,8 @@ const ART = {
   peach: { src: '/assets/photos/art-peach.webp', eyebrow: 'COMPANY', tone: 'light', chips: [] },
   arcs: { src: '/assets/photos/art-arcs.webp', eyebrow: 'CAREERS', chips: [['Life at Scalric', '/careers/openings'], ['How we hire', '/careers/openings'], ['Open roles', '/careers/openings']] },
   ribbon: { src: '/assets/photos/art-ribbon.webp', eyebrow: 'CAREERS', tone: 'light', chips: [['Life at Scalric', '/careers/openings'], ['How we hire', '/careers/openings'], ['Open roles', '/careers/openings']] },
-  orbit: { src: '/assets/photos/art-orbit.webp', eyebrow: 'THE IMPACT INITIATIVE', tone: 'light', chips: [['How the programme works', '#how'], ['Talk to us', '/contact']] },
-  wave2: { src: '/assets/photos/art-wave.webp', eyebrow: 'THE IMPACT INITIATIVE', chips: [['How the programme works', '#how'], ['Talk to us', '/contact']] },
+  orbit: { src: '/assets/photos/art-orbit.webp', eyebrow: 'THE IMPACT INITIATIVE', tone: 'light', chips: [['How the programme works', '/industries/how'], ['Talk to us', '/contact']] },
+  wave2: { src: '/assets/photos/art-wave.webp', eyebrow: 'THE IMPACT INITIATIVE', chips: [['How the programme works', '/industries/how'], ['Talk to us', '/contact']] },
 };
 
 const PHOTO_ARTS = ['whatwedo', 'insights', 'team', 'impactshow'];
