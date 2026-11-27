@@ -372,8 +372,7 @@ body .page-intro-contact .eyebrow i{display:none}
   body main .page-intro-contact p,body .page-intro-contact p{max-width:none;margin:0;font-size:16px;line-height:1.6;color:#e6eeff!important;text-align:left}
   .ind-banner-copy{align-items:flex-start;text-align:left;padding:28px 20px 24px}
   body main .ind-banner .ind-banner-eyebrow,body .ind-banner .ind-banner-eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:700;letter-spacing:.16em;color:#ffba49!important}
-  .ind-banner-eyebrow::before{content:none!important;display:none!important}
-  body main .ind-banner h1,body .ind-banner .ind-banner-copy h1{margin:16px 0 14px;font-size:clamp(34px,10vw,46px);font-weight:500;line-height:1.08;letter-spacing:-.02em}
+  .ind-banner-eyebrow::before{content:none!important;display:none!important}  body main .ind-banner h1,body .ind-banner .ind-banner-copy h1{margin:16px 0 14px;font-size:clamp(34px,10vw,46px);font-weight:500;line-height:1.08;letter-spacing:-.02em}
   body main .ind-banner-copy p,body .ind-banner .ind-banner-copy p{font-size:16px;line-height:1.6;color:#e6eeff!important}
   .life-hero-m-box .ah-eyebrow{display:inline-flex;align-items:center;gap:12px;margin-bottom:16px;font-size:12px;font-weight:700;letter-spacing:.16em;color:#cfe0ff}
   .life-hero-m-box .ah-eyebrow i{width:30px;height:2px;background:currentColor}

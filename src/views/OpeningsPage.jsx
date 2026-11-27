@@ -85,7 +85,7 @@ export default function OpeningsPage({ search = '' }) {
             <span data-label="Location" role="cell">{role.location || '—'}</span>
             <span data-label="Team" role="cell">{role.team || '—'}</span>
             <span data-label="Work mode" role="cell">{role.workMode || '—'}</span>
-            <span className={`opn-apply${mobile ? ' opn-apply-m' : ''}`} role="cell"><Link href={`/careers/${role.slug}#apply`} className={`button ${mobile ? 'opn-apply-yellow' : 'button-green'}`} onClick={() => track(role.slug)}>Apply</Link></span>
+            <span className={`opn-apply${mobile ? ' opn-apply-m' : ''}`} role="cell"><Link href={`/careers/${role.slug}/apply`} className={`button ${mobile ? 'opn-apply-yellow' : 'button-green'}`} onClick={() => track(role.slug)}>Apply</Link></span>
           </div>)}
         </div> : <div className="opn-empty"><h2>No roles match your search</h2><p>Try removing a filter or searching for something broader.</p><button type="button" className="button button-green" onClick={clear}>Clear all filters</button></div>}
         {pages > 1 && <nav className="opn-pager" aria-label="Pagination">

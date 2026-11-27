@@ -1,8 +1,8 @@
 export const capabilities = [
-  { number: '01', title: 'SaaS & software', text: 'Digital products designed around the business outcomes that matter.', icon: '◒', href: '/what-we-do#saas', image: '/assets/cards/cap-saas.svg' },
-  { number: '02', title: 'Artificial intelligence', text: 'AI applied to decisions, services and operations with purpose.', icon: '✳', href: '/what-we-do#ai', image: '/assets/cards/cap-ai.svg' },
-  { number: '03', title: 'Data & automation', text: 'Turn fragmented processes and information into forward motion.', icon: '⌘', href: '/what-we-do#data-automation', image: '/assets/cards/cap-data.svg' },
-  { number: '04', title: 'Consulting', text: 'Connect market understanding, strategy and technology delivery.', icon: '↗', href: '/what-we-do#consulting', image: '/assets/cards/cap-consulting.svg' },
+  { number: '01', title: 'SaaS & software', text: 'Digital products designed around the business outcomes that matter.', icon: '◒', href: '/what-we-do/saas', image: '/assets/cards/cap-saas.svg' },
+  { number: '02', title: 'Artificial intelligence', text: 'AI applied to decisions, services and operations with purpose.', icon: '✳', href: '/what-we-do/ai', image: '/assets/cards/cap-ai.svg' },
+  { number: '03', title: 'Data & automation', text: 'Turn fragmented processes and information into forward motion.', icon: '⌘', href: '/what-we-do/data-automation', image: '/assets/cards/cap-data.svg' },
+  { number: '04', title: 'Consulting', text: 'Connect market understanding, strategy and technology delivery.', icon: '↗', href: '/what-we-do/consulting', image: '/assets/cards/cap-consulting.svg' },
 ];
 
 export const topics = [

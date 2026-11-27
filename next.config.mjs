@@ -7,6 +7,9 @@ const cache = (value) => [{ key: 'Cache-Control', value }];
 export default {
   reactStrictMode: true,
   devIndicators: false,
+  // One worker, run as a thread: this machine has little free memory, and extra child processes were being killed
+  // ("Jest worker encountered 2 child process exceptions") while generating static paths.
+  experimental: { agentUpgrade: 'security', cpus: 1, workerThreads: true },
   async rewrites() {
     return [{ source: '/api/:path*', destination: `${apiOrigin}/api/:path*` }];
   },

@@ -1,8 +1,8 @@
 import React from 'react';
-import NicheSpotlight from './NicheSpotlight.jsx';
 import CtaBand from './CtaBand.jsx';
+// import NicheSpotlight from './NicheSpotlight.jsx'; // restore together with <NicheSpotlight /> below
 import { sampleFeedback } from './FeedbackCarousel.jsx';
-import { Eyebrow, Reveal } from './UI.jsx';
+import { Eyebrow, Link, Reveal } from './UI.jsx';
 import ImpactDetail from './ImpactDetail.jsx';
 import { useMobile } from '../lib/useMobile.js';
 import { impactIndustries, impactKey } from '../data/impactIndustries.js';
@@ -158,12 +158,14 @@ export default function ImpactSections({ children }) {
     <section className="imp-intro"><div className="container">
       <p className="imp-kicker">Scalric Impact</p>
       <ScrollStatement />
-      <a href="#how" className="imp-link">See how the program works <span aria-hidden="true">→</span></a>
+      <Link href="/industries/how" className="imp-link">See how the program works <span aria-hidden="true">→</span></Link>
     </div></section>
 
     <Showcase />
 
+    {/* Removed for now: "Who we support" niche spotlight (NGOs, Local Businesses, …). Uncomment this line and the import at the top to restore.
     <NicheSpotlight />
+    */}
 
     <section className="imp-how" id="how"><div className="container">
       <div className="imp-how-head"><Eyebrow>HOW IT WORKS</Eyebrow><h2>Listen, build, learn</h2><p>A thoughtful path from a real need to technology that can keep making a difference</p></div>
@@ -173,12 +175,14 @@ export default function ImpactSections({ children }) {
       </article></Reveal>)}</div>
     </div></section>
 
+    {/* Removed for now: "Stories of progress / Real stories and testimonials". Uncomment to restore.
     <section className="imp-stories"><div className="container">
       <div className="imp-stories-head">
         <div><Eyebrow>STORIES OF PROGRESS</Eyebrow><h2>Real stories<br />and testimonials</h2></div>
       </div>
       <StoryPanels />
     </div></section>
+    */}
 
     {children}
 
