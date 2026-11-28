@@ -460,3 +460,10 @@ body main .company-manifesto .mf-block .btn-talk:hover::after{transform:translat
 
 /* Contact page (phones): cropped photo keeps her face and the monitor in frame above the headline */
 body .m-over-media>img.ct-m-img{aspect-ratio:880/735;height:auto;min-height:0;object-fit:cover;object-position:50% 20%}
+
+/* Company hero: copy block (label, heading, paragraph) is vertically centred in the blue panel, equal space above and below */
+@media (min-width:861px){
+  body .ah.ah-team{display:flex;align-items:stretch}
+  body .ah.ah-team .ah-inner{align-self:stretch!important;display:flex;align-items:center!important;padding-block:clamp(32px,5vh,64px)!important}
+  body .ah.ah-team .ah-copy{margin-block:0}
+}
